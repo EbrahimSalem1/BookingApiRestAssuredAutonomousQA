@@ -70,7 +70,7 @@ public class ApiExplorer {
         if ("demand".equals(probe.target()) && !QaConfig.get().hasDemandCredentials()) {
             return new Observation(probe.name(), probe.target(), probe.area(), probe.risk(), request,
                     null, null, null, null, null, Map.of(), List.of(), ShapeFingerprint.compare(null, List.of()),
-                    null, Observation.Health.NOT_PROBED, "No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID)");
+                    null, Observation.Health.NOT_PROBED, "No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID)", null);
         }
         RequestSpecification spec = spec(probe);
         long started = System.nanoTime();
@@ -89,7 +89,7 @@ public class ApiExplorer {
             return new Observation(probe.name(), probe.target(), probe.area(), probe.risk(), request,
                     null, (System.nanoTime() - started) / 1_000_000, null, null, null, Map.of(), List.of(),
                     ShapeFingerprint.compare(null, List.of()), e.getClass().getSimpleName() + ": " + e.getMessage(),
-                    Observation.Health.UNREACHABLE, "Surface not reachable from this network");
+                    Observation.Health.UNREACHABLE, "Surface not reachable from this network", null);
         }
     }
 
@@ -106,12 +106,17 @@ public class ApiExplorer {
         }
 
         List<String> shape = List.of();
+        String excerpt = null;
         if (probe.json() && blocked == null) {
-            try {
-                JsonNode node = JSON.readTree(body);
-                shape = ShapeFingerprint.of(node);
-            } catch (IOException e) {
-                shape = List.of("$:not-json");
+            if (body.isBlank()) {
+                shape = List.of("$:empty");
+            } else {
+                try {
+                    shape = ShapeFingerprint.of(JSON.readTree(body));
+                    excerpt = body.length() > 600 ? body.substring(0, 600) + "..." : body;
+                } catch (IOException e) {
+                    shape = List.of("$:not-json");
+                }
             }
         }
         Observation.ShapeDrift drift = ShapeFingerprint.compare(loadBaseline(probe.name()), shape);
@@ -135,12 +140,18 @@ public class ApiExplorer {
             note = "Latency " + latency + " ms above SLO " + sla + " ms";
         } else {
             health = Observation.Health.HEALTHY;
-            note = drift.drifted() ? "Additive change vs baseline: " + drift.added() : (drift.baselineFound() ? "Matches baseline" : "No baseline yet");
+            if (!probe.json()) {
+                note = "HTML surface (status, headers and latency tracked; no JSON shape)";
+            } else if (drift.drifted()) {
+                note = "Additive change vs baseline: " + drift.added();
+            } else {
+                note = drift.baselineFound() ? "Matches baseline" : "No baseline yet";
+            }
         }
 
         return new Observation(probe.name(), probe.target(), probe.area(), probe.risk(), request,
                 r.getStatusCode(), latency, r.getContentType(), body.length(), blocked, headers, shape, drift,
-                null, health, note);
+                null, health, note, excerpt);
     }
 
     private static RequestSpecification spec(Probe probe) {

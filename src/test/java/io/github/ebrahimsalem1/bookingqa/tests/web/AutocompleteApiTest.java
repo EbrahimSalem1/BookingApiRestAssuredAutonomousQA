@@ -98,6 +98,22 @@ public class AutocompleteApiTest extends BaseApiTest {
         response.then().statusCode(200).time(lessThan(config.apiSlaMs()));
     }
 
+    @Test(groups = "security", description = "JSON API responses carry transport and sniffing protections")
+    @Description("The HTML pages are bot-protected from CI networks, but the autocomplete API is not: it is the "
+            + "surface where header hygiene can be verified live on every run.")
+    public void apiResponsesCarrySecurityHeaders() {
+        Response response = assumeNotBlocked(autocomplete.suggest("Cairo"));
+        String hsts = response.getHeader("Strict-Transport-Security");
+        assertThat(hsts).as("Strict-Transport-Security").isNotBlank().containsIgnoringCase("max-age=");
+        long maxAge = Long.parseLong(hsts.replaceAll("(?i).*max-age=(\\d+).*", "$1"));
+        assertThat(maxAge).as("HSTS max-age seconds").isGreaterThanOrEqualTo(31_536_000L);
+        assertThat(response.getHeader("X-Content-Type-Options")).as("X-Content-Type-Options").isEqualToIgnoringCase("nosniff");
+        String server = response.getHeader("Server");
+        if (server != null) {
+            assertThat(server).as("Server header must not disclose a version").doesNotContainPattern("\\d+\\.\\d+");
+        }
+    }
+
     @DataProvider(name = "edgeQueries")
     public Object[][] edgeQueries() {
         return new Object[][]{

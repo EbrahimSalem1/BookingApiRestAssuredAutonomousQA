@@ -3,7 +3,10 @@ package io.github.ebrahimsalem1.bookingqa.autonomous.explore;
 import java.util.List;
 import java.util.Map;
 
-/** What the explorer saw when it sent one {@link Probe}. */
+/**
+ * What the explorer saw when it sent one {@link Probe}.
+ * {@code excerpt} keeps the first characters of a JSON body as evidence for exploratory notes.
+ */
 public record Observation(String probe,
                           String target,
                           String area,
@@ -19,7 +22,8 @@ public record Observation(String probe,
                           ShapeDrift drift,
                           String error,
                           Health health,
-                          String note) {
+                          String note,
+                          String excerpt) {
 
     public enum Health { HEALTHY, SLOW, UNEXPECTED_STATUS, CONTRACT_DRIFT, BLOCKED, UNREACHABLE, NOT_PROBED }
 

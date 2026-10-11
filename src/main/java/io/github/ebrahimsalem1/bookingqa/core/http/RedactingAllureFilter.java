@@ -31,7 +31,7 @@ public final class RedactingAllureFilter implements Filter {
 
         String request = req.getMethod() + " " + req.getURI() + "\n"
                 + req.getHeaders().asList().stream().map(RedactingAllureFilter::render).collect(Collectors.joining("\n"))
-                + "\n\n" + truncate(req.getBody() == null ? "" : String.valueOf((Object) req.getBody()));
+                + "\n\n" + truncate(req.getBody() == null ? "" : String.valueOf(req.<Object>getBody()));
 
         String reply = "HTTP " + response.getStatusCode() + "  (" + response.getTime() + " ms)\n"
                 + response.getHeaders().asList().stream().map(RedactingAllureFilter::render).collect(Collectors.joining("\n"))

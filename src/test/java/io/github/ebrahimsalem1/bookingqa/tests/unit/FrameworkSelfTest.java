@@ -130,7 +130,7 @@ public class FrameworkSelfTest {
 
     private static Observation observation(String probe, String target, Observation.Health health, String blocked) {
         return new Observation(probe, target, "search", 5, "GET /", health == Observation.Health.NOT_PROBED ? null : 200, 100L,
-                "text/html", 10, blocked, Map.of(), List.of(), ShapeFingerprint.compare(null, List.of()), null, health, "note");
+                "text/html", 10, blocked, Map.of(), List.of(), ShapeFingerprint.compare(null, List.of()), null, health, "note", null);
     }
 
     private static TestOutcome outcome(TestOutcome.Status status, FailureCategory category) {

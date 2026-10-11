@@ -16,7 +16,11 @@
   "response": {
     "status": 200,
     "headers": {
-      "Content-Type": "application/json; charset=utf-8"
+      "Content-Type": "application/json; charset=utf-8",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Server": "envoy"
     },
     "bodyFileName": "autocomplete/cairo-ar.json"
   }
