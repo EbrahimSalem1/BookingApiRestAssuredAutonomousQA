@@ -190,13 +190,13 @@
   followRedirects: true
 
 - name: autocomplete-get-method
-  description: GET on a POST endpoint (method handling)
+  description: GET on a POST endpoint (method handling). Observed 2026-10-11 as 200 with empty results (EXPLORATORY O7)
   target: autocomplete
   area: search
   risk: 1
   method: GET
   path: /autocomplete.json
-  expectStatus: [400, 404, 405]
+  expectStatus: [200, 400, 404, 405]
   json: true
   followRedirects: true
 

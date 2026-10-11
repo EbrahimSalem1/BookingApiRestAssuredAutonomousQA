@@ -127,11 +127,19 @@ public final class QaConfig {
     }
 
     public Optional<String> demandToken() {
-        return find("demand.token");
+        return credential("demand.token");
     }
 
     public Optional<String> demandAffiliateId() {
-        return find("demand.affiliate.id");
+        return credential("demand.affiliate.id");
+    }
+
+    /** In mock, real credentials from the environment are ignored so they are never sent to the mock. */
+    private Optional<String> credential(String key) {
+        if (isMock()) {
+            return Optional.ofNullable(properties.getProperty(key));
+        }
+        return find(key);
     }
 
     public boolean hasDemandCredentials() {

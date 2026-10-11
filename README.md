@@ -192,6 +192,16 @@ run, or a surface was unreachable or fully challenged. Otherwise `PASS`.
 | `target/allure-results` | Allure results with redacted request/response attachments |
 | `target/cucumber/index.html` | Cucumber HTML report |
 
+### Latest results (2026-10-11)
+
+| Run | Checks | Outcome |
+|---|---|---|
+| Quality gate, `mock` | 73 | 72 passed, 1 skipped (HTTP->HTTPS redirect is not applicable to a localhost mock). Agent verdict **PASS** |
+| Autonomous, `live` | 48 executed + 17 probes | 48 passed. Verdict **INCONCLUSIVE**: the HTML pages are AWS-WAF-challenged from GitHub runners (`web` excluded with a reason), and there are no Demand API partner credentials (`demand-partner` excluded). Autocomplete and the Demand API auth gate are fully verified live. |
+
+Every run's report is versioned on the [`qa-reports`](../../tree/qa-reports) branch
+(`mock/`, `live/`: `report.md`, `report.json`, history, healing proposals).
+
 ---
 
 ## 6. Extending
