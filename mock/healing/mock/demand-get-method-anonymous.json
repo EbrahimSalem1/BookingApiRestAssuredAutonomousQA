@@ -1,0 +1,1 @@
+[ "$.errors:array", "$.errors[].id:string", "$.errors[].message:string", "$.errors[]:object", "$.request_id:string", "$:object" ]

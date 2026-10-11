@@ -1,0 +1,1 @@
+[ "$.results:array", "$.results[].cc1:string", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label:string", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_hotels:number", "$.results[]:object", "$:object" ]
