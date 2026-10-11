@@ -1,0 +1,54 @@
+{
+  "results": [
+    {
+      "dest_id": "-290692",
+      "dest_type": "city",
+      "label": "Cairo, Cairo Governorate, Egypt",
+      "cc1": "eg",
+      "latitude": 30.0444,
+      "longitude": 31.2357,
+      "nr_hotels": 3851,
+      "lc": "en"
+    },
+    {
+      "dest_id": "-290263",
+      "dest_type": "city",
+      "label": "Giza, Giza Governorate, Egypt",
+      "cc1": "eg",
+      "latitude": 30.0131,
+      "longitude": 31.2089,
+      "nr_hotels": 812,
+      "lc": "en"
+    },
+    {
+      "dest_id": "1517",
+      "dest_type": "district",
+      "label": "Downtown Cairo, Cairo, Egypt",
+      "cc1": "eg",
+      "latitude": 30.0459,
+      "longitude": 31.2422,
+      "nr_hotels": 402,
+      "lc": "en"
+    },
+    {
+      "dest_id": "-290692",
+      "dest_type": "airport",
+      "label": "Cairo International Airport, Cairo, Egypt",
+      "cc1": "eg",
+      "latitude": 30.1219,
+      "longitude": 31.4056,
+      "nr_hotels": 95,
+      "lc": "en"
+    },
+    {
+      "dest_id": "226",
+      "dest_type": "landmark",
+      "label": "Cairo Tower, Cairo, Egypt",
+      "cc1": "eg",
+      "latitude": 30.0459,
+      "longitude": 31.2243,
+      "nr_hotels": 60,
+      "lc": "en"
+    }
+  ]
+}

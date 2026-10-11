@@ -1,0 +1,23 @@
+{
+  "name": "demand-03-method-not-allowed",
+  "priority": 20,
+  "request": {
+    "method": "ANY",
+    "urlPathPattern": "/3\\.1/.*"
+  },
+  "response": {
+    "status": 405,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "jsonBody": {
+      "request_id": "01mockerr0000000000000000",
+      "errors": [
+        {
+          "id": "method_not_allowed",
+          "message": "Use POST for this endpoint."
+        }
+      ]
+    }
+  }
+}

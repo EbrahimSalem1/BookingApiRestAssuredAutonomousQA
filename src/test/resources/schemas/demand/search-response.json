@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Demand API /accommodations/search response",
+  "definitions": {
+    "money": {
+      "type": "object",
+      "required": [
+        "accommodation_currency",
+        "booker_currency"
+      ],
+      "properties": {
+        "accommodation_currency": {
+          "type": "number",
+          "minimum": 0
+        },
+        "booker_currency": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "price": {
+      "type": "object",
+      "required": [
+        "total"
+      ],
+      "properties": {
+        "base": {
+          "$ref": "#/definitions/money"
+        },
+        "display": {
+          "$ref": "#/definitions/money"
+        },
+        "total": {
+          "$ref": "#/definitions/money"
+        }
+      }
+    },
+    "currency": {
+      "type": "object",
+      "required": [
+        "accommodation",
+        "booker"
+      ],
+      "properties": {
+        "accommodation": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "booker": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      }
+    },
+    "product": {
+      "type": "object",
+      "required": [
+        "id",
+        "price"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "price": {
+          "$ref": "#/definitions/price"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "request_id",
+    "data"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "currency",
+          "price"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "currency": {
+            "$ref": "#/definitions/currency"
+          },
+          "price": {
+            "$ref": "#/definitions/price"
+          },
+          "url": {
+            "type": "string"
+          },
+          "deep_link_url": {
+            "type": "string"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/product"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "next_page": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

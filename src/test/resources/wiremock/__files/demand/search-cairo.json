@@ -1,0 +1,78 @@
+{
+  "request_id": "01mocksearch00000000000001",
+  "data": [
+    {
+      "id": 10004,
+      "currency": {
+        "accommodation": "EUR",
+        "booker": "EUR"
+      },
+      "price": {
+        "base": {
+          "accommodation_currency": 220.0,
+          "booker_currency": 220.0
+        },
+        "display": {
+          "accommodation_currency": 245.5,
+          "booker_currency": 245.5
+        },
+        "total": {
+          "accommodation_currency": 245.5,
+          "booker_currency": 245.5
+        }
+      },
+      "url": "https://www.booking.com/hotel/eg/nile-view.html",
+      "deep_link_url": "booking://hotel/10004"
+    },
+    {
+      "id": 10021,
+      "currency": {
+        "accommodation": "EUR",
+        "booker": "EUR"
+      },
+      "price": {
+        "base": {
+          "accommodation_currency": 180.0,
+          "booker_currency": 180.0
+        },
+        "display": {
+          "accommodation_currency": 199.0,
+          "booker_currency": 199.0
+        },
+        "total": {
+          "accommodation_currency": 199.0,
+          "booker_currency": 199.0
+        }
+      },
+      "url": "https://www.booking.com/hotel/eg/downtown-suites.html",
+      "deep_link_url": "booking://hotel/10021"
+    },
+    {
+      "id": 10037,
+      "currency": {
+        "accommodation": "EUR",
+        "booker": "EUR"
+      },
+      "price": {
+        "base": {
+          "accommodation_currency": 410.0,
+          "booker_currency": 410.0
+        },
+        "display": {
+          "accommodation_currency": 452.3,
+          "booker_currency": 452.3
+        },
+        "total": {
+          "accommodation_currency": 452.3,
+          "booker_currency": 452.3
+        }
+      },
+      "url": "https://www.booking.com/hotel/eg/pyramids-resort.html",
+      "deep_link_url": "booking://hotel/10037"
+    }
+  ],
+  "metadata": {
+    "next_page": "page-2-token",
+    "total_results": 5
+  }
+}

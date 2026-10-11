@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "booking.com search-box autocomplete response",
+  "type": "object",
+  "required": ["results"],
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dest_id", "dest_type", "label"],
+        "properties": {
+          "dest_id":   { "type": ["string", "integer"] },
+          "dest_type": { "type": "string", "minLength": 1 },
+          "label":     { "type": "string", "minLength": 1 },
+          "cc1":       { "type": ["string", "null"] },
+          "latitude":  { "type": ["number", "null"] },
+          "longitude": { "type": ["number", "null"] },
+          "nr_hotels": { "type": ["integer", "null"] }
+        }
+      }
+    }
+  }
+}

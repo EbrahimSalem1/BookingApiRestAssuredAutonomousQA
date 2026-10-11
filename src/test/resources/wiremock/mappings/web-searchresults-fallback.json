@@ -1,0 +1,19 @@
+{
+  "name": "web-searchresults-fallback",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPath": "/searchresults.html"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/html; charset=UTF-8",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "SAMEORIGIN",
+      "Server": "nginx"
+    },
+    "bodyFileName": "web/searchresults-generic.html"
+  }
+}

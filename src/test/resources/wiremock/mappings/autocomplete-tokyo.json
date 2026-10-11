@@ -1,0 +1,23 @@
+{
+  "name": "autocomplete-tokyo",
+  "priority": 5,
+  "request": {
+    "method": "POST",
+    "url": "/autocomplete.json",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.query",
+          "matches": "(?i)\\s*tokyo\\s*"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "bodyFileName": "autocomplete/tokyo.json"
+  }
+}

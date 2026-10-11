@@ -1,0 +1,23 @@
+{
+  "name": "demand-search-page-2",
+  "priority": 3,
+  "request": {
+    "method": "POST",
+    "urlPath": "/3.1/accommodations/search",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.page",
+          "equalTo": "page-2-token"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "bodyFileName": "demand/search-cairo-page2.json"
+  }
+}

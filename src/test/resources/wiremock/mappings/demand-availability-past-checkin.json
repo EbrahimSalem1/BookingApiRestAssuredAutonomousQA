@@ -1,0 +1,31 @@
+{
+  "name": "demand-availability-past-checkin",
+  "priority": 2,
+  "request": {
+    "method": "POST",
+    "urlPath": "/3.1/accommodations/availability",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.checkin",
+          "before": "now"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "jsonBody": {
+      "request_id": "01mockerr0000000000000000",
+      "errors": [
+        {
+          "id": "invalid_parameter",
+          "message": "'checkin' cannot be in the past."
+        }
+      ]
+    }
+  }
+}

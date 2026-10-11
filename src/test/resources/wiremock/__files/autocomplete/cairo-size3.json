@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "dest_id": "-290692",
+      "dest_type": "city",
+      "label": "Cairo, Cairo Governorate, Egypt",
+      "cc1": "eg",
+      "latitude": 30.0444,
+      "longitude": 31.2357,
+      "nr_hotels": 3851,
+      "lc": "en"
+    },
+    {
+      "dest_id": "-290263",
+      "dest_type": "city",
+      "label": "Giza, Giza Governorate, Egypt",
+      "cc1": "eg",
+      "latitude": 30.0131,
+      "longitude": 31.2089,
+      "nr_hotels": 812,
+      "lc": "en"
+    },
+    {
+      "dest_id": "1517",
+      "dest_type": "district",
+      "label": "Downtown Cairo, Cairo, Egypt",
+      "cc1": "eg",
+      "latitude": 30.0459,
+      "longitude": 31.2422,
+      "nr_hotels": 402,
+      "lc": "en"
+    }
+  ]
+}

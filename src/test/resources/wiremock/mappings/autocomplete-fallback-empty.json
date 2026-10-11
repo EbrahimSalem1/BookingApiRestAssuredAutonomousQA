@@ -1,0 +1,17 @@
+{
+  "name": "autocomplete-fallback-empty",
+  "priority": 10,
+  "request": {
+    "method": "POST",
+    "url": "/autocomplete.json"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "jsonBody": {
+      "results": []
+    }
+  }
+}

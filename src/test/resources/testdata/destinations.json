@@ -1,0 +1,7 @@
+[
+  { "name": "Cairo",     "expectedInLabel": "Egypt",                "countryCode": "eg", "demandCityId": -290692 },
+  { "name": "Paris",     "expectedInLabel": "France",               "countryCode": "fr", "demandCityId": -1456928 },
+  { "name": "Amsterdam", "expectedInLabel": "Netherlands",          "countryCode": "nl", "demandCityId": -2140479 },
+  { "name": "Dubai",     "expectedInLabel": "United Arab Emirates", "countryCode": "ae", "demandCityId": -782831 },
+  { "name": "Tokyo",     "expectedInLabel": "Japan",                "countryCode": "jp", "demandCityId": -246227 }
+]

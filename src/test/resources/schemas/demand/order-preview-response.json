@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Demand API /orders/preview response",
+  "definitions": {
+    "money": {
+      "type": "object",
+      "required": [
+        "accommodation_currency",
+        "booker_currency"
+      ],
+      "properties": {
+        "accommodation_currency": {
+          "type": "number",
+          "minimum": 0
+        },
+        "booker_currency": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "price": {
+      "type": "object",
+      "required": [
+        "total"
+      ],
+      "properties": {
+        "base": {
+          "$ref": "#/definitions/money"
+        },
+        "display": {
+          "$ref": "#/definitions/money"
+        },
+        "total": {
+          "$ref": "#/definitions/money"
+        }
+      }
+    },
+    "currency": {
+      "type": "object",
+      "required": [
+        "accommodation",
+        "booker"
+      ],
+      "properties": {
+        "accommodation": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "booker": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      }
+    },
+    "product": {
+      "type": "object",
+      "required": [
+        "id",
+        "price"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "price": {
+          "$ref": "#/definitions/price"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "request_id",
+    "data"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "accommodation",
+        "currency"
+      ],
+      "properties": {
+        "currency": {
+          "$ref": "#/definitions/currency"
+        },
+        "accommodation": {
+          "type": "object",
+          "required": [
+            "id",
+            "price",
+            "products"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "price": {
+              "$ref": "#/definitions/price"
+            },
+            "products": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/definitions/product"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

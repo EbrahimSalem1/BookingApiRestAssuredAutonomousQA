@@ -1,0 +1,28 @@
+{
+  "name": "demand-02-auth-invalid",
+  "priority": 1,
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/3\\.1/.*",
+    "headers": {
+      "Authorization": {
+        "doesNotMatch": "Bearer mock-token"
+      }
+    }
+  },
+  "response": {
+    "status": 401,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "jsonBody": {
+      "request_id": "01mockerr0000000000000000",
+      "errors": [
+        {
+          "id": "unauthorized",
+          "message": "The provided token is not valid."
+        }
+      ]
+    }
+  }
+}

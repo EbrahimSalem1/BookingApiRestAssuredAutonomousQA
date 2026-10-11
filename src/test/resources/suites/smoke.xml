@@ -1,0 +1,30 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!--
+  booking.com smoke. Run with:  mvn test -Dsuite=smoke [-Dqa.env=live|mock|sandbox]
+  Order matters: offline self-tests first (fail fast on a broken framework), then public
+  surfaces by risk, then partner (credentialed) checkout, then the BDD layer.
+-->
+<suite name="booking.com smoke" verbose="1" preserve-order="true">
+    <listeners>
+        <listener class-name="io.github.ebrahimsalem1.bookingqa.autonomous.execute.AutonomousTestListener"/>
+        <listener class-name="io.github.ebrahimsalem1.bookingqa.autonomous.execute.RetryTransformer"/>
+    </listeners>
+
+    <test name="booking.com smoke">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="io.github.ebrahimsalem1.bookingqa.tests.unit.FrameworkSelfTest"/>
+            <class name="io.github.ebrahimsalem1.bookingqa.tests.web.AutocompleteApiTest"/>
+            <class name="io.github.ebrahimsalem1.bookingqa.tests.web.SearchResultsPageTest"/>
+            <class name="io.github.ebrahimsalem1.bookingqa.tests.web.WebPlatformSecurityTest"/>
+            <class name="io.github.ebrahimsalem1.bookingqa.tests.demand.DemandApiAuthTest"/>
+            <class name="io.github.ebrahimsalem1.bookingqa.tests.demand.DemandSearchTest"/>
+            <class name="io.github.ebrahimsalem1.bookingqa.tests.demand.DemandCheckoutFlowTest"/>
+            <class name="io.github.ebrahimsalem1.bookingqa.bdd.CucumberRunnerTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-gate:
+    name: Quality gate (hermetic mock)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Compile (warnings visible)
+        run: mvn -B -ntp test-compile
+
+      - name: Full suite against the mock (unit self-tests + API checks + BDD)
+        run: mvn -B -ntp test -Dqa.env=mock
+
+      - name: Autonomous agent dry run against the mock
+        run: mvn -B -ntp exec:java -Dqa.env=mock
+
+      - name: Allure HTML report
+        if: always()
+        run: mvn -B -ntp -q allure:report || echo "Allure report generation skipped"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mock-results
+          path: |
+            target/autonomous
+            target/surefire-reports
+            target/cucumber
+            target/site/allure-maven-plugin
+          retention-days: 14
+
+  autonomous-live:
+    name: Autonomous QA (live booking.com)
+    needs: quality-gate
+    uses: ./.github/workflows/autonomous-qa.yml
+    with:
+      environment: live
+    secrets: inherit
+    permissions:
+      contents: write
+      issues: write

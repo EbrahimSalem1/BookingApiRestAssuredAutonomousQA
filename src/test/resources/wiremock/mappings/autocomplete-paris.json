@@ -1,0 +1,23 @@
+{
+  "name": "autocomplete-paris",
+  "priority": 5,
+  "request": {
+    "method": "POST",
+    "url": "/autocomplete.json",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.query",
+          "matches": "(?i)\\s*paris\\s*"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "bodyFileName": "autocomplete/paris.json"
+  }
+}

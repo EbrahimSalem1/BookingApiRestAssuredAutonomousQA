@@ -1,0 +1,55 @@
+{
+  "request_id": "01mocksearch00000000000002",
+  "data": [
+    {
+      "id": 10052,
+      "currency": {
+        "accommodation": "EUR",
+        "booker": "EUR"
+      },
+      "price": {
+        "base": {
+          "accommodation_currency": 95.0,
+          "booker_currency": 95.0
+        },
+        "display": {
+          "accommodation_currency": 104.5,
+          "booker_currency": 104.5
+        },
+        "total": {
+          "accommodation_currency": 104.5,
+          "booker_currency": 104.5
+        }
+      },
+      "url": "https://www.booking.com/hotel/eg/zamalek-inn.html",
+      "deep_link_url": "booking://hotel/10052"
+    },
+    {
+      "id": 10068,
+      "currency": {
+        "accommodation": "EUR",
+        "booker": "EUR"
+      },
+      "price": {
+        "base": {
+          "accommodation_currency": 130.0,
+          "booker_currency": 130.0
+        },
+        "display": {
+          "accommodation_currency": 143.0,
+          "booker_currency": 143.0
+        },
+        "total": {
+          "accommodation_currency": 143.0,
+          "booker_currency": 143.0
+        }
+      },
+      "url": "https://www.booking.com/hotel/eg/garden-city-house.html",
+      "deep_link_url": "booking://hotel/10068"
+    }
+  ],
+  "metadata": {
+    "next_page": null,
+    "total_results": 5
+  }
+}

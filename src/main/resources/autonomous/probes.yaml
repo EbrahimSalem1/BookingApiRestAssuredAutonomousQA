@@ -1,0 +1,116 @@
+# ---------------------------------------------------------------------------
+# Exploration catalogue: cheap requests the agent sends BEFORE planning a run,
+# to learn how each booking.com surface behaves right now (reachable? challenged
+# by bot protection? slow? did the JSON shape drift from the recorded baseline?).
+#
+# risk: 1 cosmetic .. 5 revenue critical -> drives execution order and report ranking
+# target: web | autocomplete | demand | demand-anonymous
+# Placeholders: ${checkin} ${checkout} ${pastCheckin} (always relative to today)
+# ---------------------------------------------------------------------------
+
+- name: autocomplete-city
+  description: Search box suggestions for a city (first thing every booking journey calls)
+  target: autocomplete
+  area: search
+  risk: 5
+  method: POST
+  path: /autocomplete.json
+  body: { query: "Cairo", language: "en-gb", size: 5 }
+  expectStatus: [200]
+  json: true
+  followRedirects: true
+
+- name: autocomplete-unicode
+  description: Arabic script query (multilingual users, encoding risk)
+  target: autocomplete
+  area: search
+  risk: 3
+  method: POST
+  path: /autocomplete.json
+  body: { query: "القاهرة", language: "ar", size: 5 }
+  expectStatus: [200]
+  json: true
+  followRedirects: true
+
+- name: autocomplete-empty
+  description: Empty query must be handled gracefully (no 5xx)
+  target: autocomplete
+  area: search
+  risk: 2
+  method: POST
+  path: /autocomplete.json
+  body: { query: "", language: "en-gb", size: 5 }
+  expectStatus: [200, 400, 422]
+  json: true
+  followRedirects: true
+
+- name: search-results-page
+  description: Server-rendered search results for a valid query
+  target: web
+  area: search
+  risk: 5
+  method: GET
+  path: /searchresults.html
+  query: { ss: "Cairo", checkin: "${checkin}", checkout: "${checkout}", group_adults: "2", no_rooms: "1", group_children: "0", lang: "en-gb" }
+  expectStatus: [200]
+  json: false
+  followRedirects: true
+
+- name: search-results-past-dates
+  description: Check-in two years in the past (date validation)
+  target: web
+  area: search
+  risk: 3
+  method: GET
+  path: /searchresults.html
+  query: { ss: "Cairo", checkin: "${pastCheckin}", checkout: "${checkin}", group_adults: "2", no_rooms: "1", lang: "en-gb" }
+  expectStatus: [200, 301, 302, 400]
+  json: false
+  followRedirects: false
+
+- name: front-door
+  description: Home page reachability, edge behaviour and security headers
+  target: web
+  area: platform
+  risk: 4
+  method: GET
+  path: /
+  expectStatus: [200, 301, 302, 307, 308]
+  json: false
+  followRedirects: false
+
+- name: demand-search-anonymous
+  description: Demand API search without credentials must be refused (auth gate in front of checkout)
+  target: demand-anonymous
+  area: checkout
+  risk: 5
+  method: POST
+  path: /accommodations/search
+  body: { booker: { country: "eg", platform: "desktop" }, checkin: "${checkin}", checkout: "${checkout}", city: -290692, guests: { number_of_adults: 2, number_of_rooms: 1 } }
+  expectStatus: [401, 403]
+  json: true
+  followRedirects: false
+
+- name: demand-orders-preview-anonymous
+  description: Checkout preview without credentials must be refused
+  target: demand-anonymous
+  area: checkout
+  risk: 5
+  method: POST
+  path: /orders/preview
+  body: { booker: { country: "eg", platform: "desktop" }, currency: "EUR" }
+  expectStatus: [401, 403]
+  json: true
+  followRedirects: false
+
+- name: demand-search
+  description: Authenticated accommodation search (needs partner credentials)
+  target: demand
+  area: checkout
+  risk: 5
+  method: POST
+  path: /accommodations/search
+  body: { booker: { country: "eg", platform: "desktop" }, checkin: "${checkin}", checkout: "${checkout}", city: -290692, guests: { number_of_adults: 2, number_of_rooms: 1 }, currency: "EUR" }
+  expectStatus: [200]
+  json: true
+  followRedirects: false

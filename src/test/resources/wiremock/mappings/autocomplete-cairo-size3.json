@@ -1,0 +1,29 @@
+{
+  "name": "autocomplete-cairo-size3",
+  "priority": 2,
+  "request": {
+    "method": "POST",
+    "url": "/autocomplete.json",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": {
+          "expression": "$.query",
+          "matches": "(?i)\\s*cairo\\s*"
+        }
+      },
+      {
+        "matchesJsonPath": {
+          "expression": "$.size",
+          "equalTo": "3"
+        }
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "bodyFileName": "autocomplete/cairo-size3.json"
+  }
+}

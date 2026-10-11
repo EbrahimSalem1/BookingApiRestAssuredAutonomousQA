@@ -1,0 +1,15 @@
+{
+  "name": "demand-preview",
+  "priority": 5,
+  "request": {
+    "method": "POST",
+    "urlPath": "/3.1/orders/preview"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "bodyFileName": "demand/order-preview-10004.json"
+  }
+}

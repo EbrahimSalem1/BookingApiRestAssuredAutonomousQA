@@ -1,0 +1,39 @@
+{
+  "request_id": "01mockpreview0000000000001",
+  "data": {
+    "currency": {
+      "accommodation": "EUR",
+      "booker": "EUR"
+    },
+    "accommodation": {
+      "id": 10004,
+      "price": {
+        "base": {
+          "accommodation_currency": 223.18,
+          "booker_currency": 223.18
+        },
+        "total": {
+          "accommodation_currency": 245.5,
+          "booker_currency": 245.5
+        }
+      },
+      "products": [
+        {
+          "id": "1000401_95127794_2_0_0",
+          "price": {
+            "total": {
+              "accommodation_currency": 245.5,
+              "booker_currency": 245.5
+            }
+          },
+          "policies": {
+            "cancellation": {
+              "type": "non_refundable"
+            }
+          }
+        }
+      ]
+    },
+    "order_token": "mock-order-token-0001"
+  }
+}

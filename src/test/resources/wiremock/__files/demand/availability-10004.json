@@ -1,0 +1,53 @@
+{
+  "request_id": "01mockavail000000000000001",
+  "data": {
+    "id": 10004,
+    "currency": {
+      "accommodation": "EUR",
+      "booker": "EUR"
+    },
+    "products": [
+      {
+        "id": "1000402_95127795_2_1_0",
+        "number_of_adults": 2,
+        "price": {
+          "base": {
+            "accommodation_currency": 281.82,
+            "booker_currency": 281.82
+          },
+          "total": {
+            "accommodation_currency": 310.0,
+            "booker_currency": 310.0
+          }
+        },
+        "policies": {
+          "cancellation": {
+            "type": "free_cancellation"
+          },
+          "meal_plan": "breakfast_included"
+        }
+      },
+      {
+        "id": "1000401_95127794_2_0_0",
+        "number_of_adults": 2,
+        "price": {
+          "base": {
+            "accommodation_currency": 223.18,
+            "booker_currency": 223.18
+          },
+          "total": {
+            "accommodation_currency": 245.5,
+            "booker_currency": 245.5
+          }
+        },
+        "policies": {
+          "cancellation": {
+            "type": "non_refundable"
+          },
+          "meal_plan": "room_only"
+        }
+      }
+    ],
+    "url": "https://www.booking.com/hotel/eg/nile-view.html"
+  }
+}
