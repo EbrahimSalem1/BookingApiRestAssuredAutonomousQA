@@ -1,0 +1,797 @@
+{
+  "environment" : "live",
+  "startedAt" : "2026-10-11T15:40:29Z",
+  "finishedAt" : "2026-10-11T15:40:44Z",
+  "verdict" : "INCONCLUSIVE",
+  "verdictReason" : "Everything that ran passed, but at least one surface could not be exercised from this network: [web, demand-partner]",
+  "observations" : [ {
+    "probe" : "autocomplete-city",
+    "target" : "autocomplete",
+    "area" : "search",
+    "risk" : 5,
+    "request" : "POST autocomplete/autocomplete.json",
+    "status" : 200,
+    "latencyMs" : 543,
+    "contentType" : "application/json",
+    "bytes" : 5061,
+    "blockedReason" : null,
+    "notableHeaders" : {
+      "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
+      "x-content-type-options" : "nosniff",
+      "x-frame-options" : "SAMEORIGIN",
+      "server" : "envoy",
+      "x-cache" : "Miss from cloudfront"
+    },
+    "shape" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object", "$:object" ],
+    "drift" : {
+      "baselineFound" : false,
+      "added" : [ ],
+      "removed" : [ ]
+    },
+    "error" : null,
+    "health" : "HEALTHY",
+    "note" : "No baseline yet"
+  }, {
+    "probe" : "autocomplete-unicode",
+    "target" : "autocomplete",
+    "area" : "search",
+    "risk" : 3,
+    "request" : "POST autocomplete/autocomplete.json",
+    "status" : 200,
+    "latencyMs" : 270,
+    "contentType" : "application/json",
+    "bytes" : 5315,
+    "blockedReason" : null,
+    "notableHeaders" : {
+      "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
+      "x-content-type-options" : "nosniff",
+      "x-frame-options" : "SAMEORIGIN",
+      "server" : "envoy",
+      "x-cache" : "Miss from cloudfront"
+    },
+    "shape" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object", "$:object" ],
+    "drift" : {
+      "baselineFound" : false,
+      "added" : [ ],
+      "removed" : [ ]
+    },
+    "error" : null,
+    "health" : "HEALTHY",
+    "note" : "No baseline yet"
+  }, {
+    "probe" : "autocomplete-empty",
+    "target" : "autocomplete",
+    "area" : "search",
+    "risk" : 2,
+    "request" : "POST autocomplete/autocomplete.json",
+    "status" : 200,
+    "latencyMs" : 233,
+    "contentType" : "application/json",
+    "bytes" : 14,
+    "blockedReason" : null,
+    "notableHeaders" : {
+      "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
+      "x-content-type-options" : "nosniff",
+      "x-frame-options" : "SAMEORIGIN",
+      "server" : "envoy",
+      "x-cache" : "Miss from cloudfront"
+    },
+    "shape" : [ "$.results:array", "$:object" ],
+    "drift" : {
+      "baselineFound" : false,
+      "added" : [ ],
+      "removed" : [ ]
+    },
+    "error" : null,
+    "health" : "HEALTHY",
+    "note" : "No baseline yet"
+  }, {
+    "probe" : "search-results-page",
+    "target" : "web",
+    "area" : "search",
+    "risk" : 5,
+    "request" : "GET web/searchresults.html {ss=Cairo, checkin=2026-11-25, checkout=2026-11-28, group_adults=2, no_rooms=1, group_children=0, lang=en-gb}",
+    "status" : 202,
+    "latencyMs" : 101,
+    "contentType" : "text/html; charset=utf-8",
+    "bytes" : 8410,
+    "blockedReason" : "Bot challenge page (HTTP 202, marker 'awswaf')",
+    "notableHeaders" : {
+      "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
+      "server" : "CloudFront",
+      "x-cache" : "Miss from cloudfront"
+    },
+    "shape" : [ ],
+    "drift" : {
+      "baselineFound" : false,
+      "added" : [ ],
+      "removed" : [ ]
+    },
+    "error" : null,
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network"
+  }, {
+    "probe" : "search-results-past-dates",
+    "target" : "web",
+    "area" : "search",
+    "risk" : 3,
+    "request" : "GET web/searchresults.html {ss=Cairo, checkin=2024-11-25, checkout=2026-11-25, group_adults=2, no_rooms=1, lang=en-gb}",
+    "status" : 202,
+    "latencyMs" : 53,
+    "contentType" : "text/html; charset=utf-8",
+    "bytes" : 8410,
+    "blockedReason" : "Bot challenge page (HTTP 202, marker 'awswaf')",
+    "notableHeaders" : {
+      "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
+      "server" : "CloudFront",
+      "x-cache" : "Miss from cloudfront"
+    },
+    "shape" : [ ],
+    "drift" : {
+      "baselineFound" : false,
+      "added" : [ ],
+      "removed" : [ ]
+    },
+    "error" : null,
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network"
+  }, {
+    "probe" : "front-door",
+    "target" : "web",
+    "area" : "platform",
+    "risk" : 4,
+    "request" : "GET web/",
+    "status" : 202,
+    "latencyMs" : 47,
+    "contentType" : "text/html; charset=utf-8",
+    "bytes" : 8405,
+    "blockedReason" : "Bot challenge page (HTTP 202, marker 'awswaf')",
+    "notableHeaders" : {
+      "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
+      "server" : "CloudFront",
+      "x-cache" : "Miss from cloudfront"
+    },
+    "shape" : [ ],
+    "drift" : {
+      "baselineFound" : false,
+      "added" : [ ],
+      "removed" : [ ]
+    },
+    "error" : null,
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network"
+  }, {
+    "probe" : "demand-search-anonymous",
+    "target" : "demand-anonymous",
+    "area" : "checkout",
+    "risk" : 5,
+    "request" : "POST demand-anonymous/accommodations/search",
+    "status" : 401,
+    "latencyMs" : 204,
+    "contentType" : "",
+    "bytes" : 0,
+    "blockedReason" : null,
+    "notableHeaders" : {
+      "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
+      "server" : "envoy",
+      "x-cache" : "Error from cloudfront"
+    },
+    "shape" : [ "$:string" ],
+    "drift" : {
+      "baselineFound" : false,
+      "added" : [ ],
+      "removed" : [ ]
+    },
+    "error" : null,
+    "health" : "HEALTHY",
+    "note" : "No baseline yet"
+  }, {
+    "probe" : "demand-orders-preview-anonymous",
+    "target" : "demand-anonymous",
+    "area" : "checkout",
+    "risk" : 5,
+    "request" : "POST demand-anonymous/orders/preview",
+    "status" : 401,
+    "latencyMs" : 167,
+    "contentType" : "",
+    "bytes" : 0,
+    "blockedReason" : null,
+    "notableHeaders" : {
+      "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
+      "server" : "envoy",
+      "x-cache" : "Error from cloudfront"
+    },
+    "shape" : [ "$:string" ],
+    "drift" : {
+      "baselineFound" : false,
+      "added" : [ ],
+      "removed" : [ ]
+    },
+    "error" : null,
+    "health" : "HEALTHY",
+    "note" : "No baseline yet"
+  }, {
+    "probe" : "demand-search",
+    "target" : "demand",
+    "area" : "checkout",
+    "risk" : 5,
+    "request" : "POST demand/accommodations/search",
+    "status" : null,
+    "latencyMs" : null,
+    "contentType" : null,
+    "bytes" : null,
+    "blockedReason" : null,
+    "notableHeaders" : { },
+    "shape" : [ ],
+    "drift" : {
+      "baselineFound" : false,
+      "added" : [ ],
+      "removed" : [ ]
+    },
+    "error" : null,
+    "health" : "NOT_PROBED",
+    "note" : "No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID)"
+  } ],
+  "plan" : {
+    "surfaceHealth" : {
+      "autocomplete" : "HEALTHY",
+      "web" : "BLOCKED",
+      "demand-auth" : "HEALTHY",
+      "demand-partner" : "NOT_PROBED"
+    },
+    "includedGroups" : [ "unit", "smoke", "cucumber", "autocomplete", "demand-auth", "search", "checkout", "contract", "negative", "security", "performance" ],
+    "excludedGroups" : {
+      "web" : "every probe was challenged by bot protection: Bot challenge page (HTTP 202, marker 'awswaf')",
+      "demand-partner" : "No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID)"
+    },
+    "cucumberTags" : "not @web and not @demand-partner",
+    "riskRanking" : [ "search (risk score 26)", "checkout (risk score 15)", "platform (risk score 8)" ],
+    "attention" : [ "[BLOCKED] search-results-page (risk 5): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] front-door (risk 4): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] search-results-past-dates (risk 3): Edge protection challenged the probe; checks on this surface are inconclusive from this network" ]
+  },
+  "phaseNotes" : [ "Phase `smoke`: 2 passed, 0 failed, 0 skipped (pass rate 100%, threshold 50%)", "Phase `regression`: 45 passed, 0 failed, 0 skipped, 0 transient retries" ],
+  "outcomes" : [ {
+    "id" : "AutocompleteApiTest#cityQueryReturnsTheCityFirst",
+    "description" : "City query returns the city first, in the published contract",
+    "groups" : [ "search", "autocomplete", "contract", "smoke" ],
+    "status" : "PASSED",
+    "durationMs" : 842,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "smoke"
+  }, {
+    "id" : "DemandApiAuthTest#searchWithoutCredentialsIsRefused",
+    "description" : "Search without credentials is refused with 401",
+    "groups" : [ "security", "negative", "demand-auth", "smoke", "checkout" ],
+    "status" : "PASSED",
+    "durationMs" : 198,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "smoke"
+  }, {
+    "id" : "FrameworkSelfTest#applicationResponsesAreNotFlagged",
+    "description" : "A normal page and a JSON API 403 are not mistaken for a challenge",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 3,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#challengePageIsDetected",
+    "description" : "Challenge page body is recognised",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 2,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#onlyTransientCategoriesAreRetryable",
+    "description" : "Only transient categories are retried",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 3,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#plannerExcludesBlockedSurfaces",
+    "description" : "Fully challenged surfaces are excluded with a reason; healthy ones run",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 8,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#shapeDriftDistinguishesBreakingFromAdditive",
+    "description" : "Removed fields are breaking drift, added fields are not",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 4,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[java.lang.AssertionError: 1 expectation failed.\nExpected status code <200> but was <503>., TRANSIENT_INFRA]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 4,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[java.lang.AssertionError: Expected status code <200> but was <500>., SERVER_ERROR]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 2,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 2,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[java.lang.AssertionError: Expected status code <200> but was <429>., RATE_LIMITED]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 1,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 3,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[java.lang.AssertionError: Response body doesn't match expectation.\nExpected: The content to match the given JSON schema.\nerror: object has missing required properties ([\"label\"]), CONTRACT_DRIFT]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 2,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 4,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[java.lang.AssertionError: Expected response time was not a value less than <3000L> milliseconds, was 4120 milliseconds, PERFORMANCE_DEGRADATION]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 1,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 5,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[java.lang.AssertionError: [top suggestion label] Expecting actual: \"Giza\" to contain \"Cairo\", FUNCTIONAL_DEFECT]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 2,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 6,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[java.lang.RuntimeException: I/O error, TRANSIENT_INFRA]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 2,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 7,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[org.testng.SkipException: [ENV_BLOCKED] challenged, ENVIRONMENT_BLOCKED]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 1,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 8,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[org.testng.SkipException: [NO_CREDENTIALS] set DEMAND_TOKEN, PRECONDITION_NOT_MET]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 3,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 9,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#triageClassifiesFailures[java.lang.NullPointerException: Cannot invoke \"String.length()\", TEST_DEFECT]",
+    "description" : "Failures are classified into the right category",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 3,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 10,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#verdictRules",
+    "description" : "Blocking failure => FAIL; mostly skipped => INCONCLUSIVE; otherwise PASS",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 4,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#wafHeaderIsDetected",
+    "description" : "AWS WAF challenge header is recognised",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 2,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#arabicScriptQueryIsSupported",
+    "description" : "Arabic-script query is understood (multilingual market)",
+    "groups" : [ "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 254,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[empty, ]",
+    "description" : "Edge-case queries never cause a server error",
+    "groups" : [ "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 246,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[blank,    ]",
+    "description" : "Edge-case queries never cause a server error",
+    "groups" : [ "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 236,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 2,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[gibberish, zzqxjvwkq]",
+    "description" : "Edge-case queries never cause a server error",
+    "groups" : [ "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 262,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 3,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[single char, c]",
+    "description" : "Edge-case queries never cause a server error",
+    "groups" : [ "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 292,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 4,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[very long, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+    "description" : "Edge-case queries never cause a server error",
+    "groups" : [ "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 739,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 5,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[emoji, \uD83C\uDFD6️ beach]",
+    "description" : "Edge-case queries never cause a server error",
+    "groups" : [ "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 720,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 6,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[<script>alert(1)</script>]",
+    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
+    "groups" : [ "security", "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 251,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[' OR '1'='1]",
+    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
+    "groups" : [ "security", "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 250,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 2,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[Cairo\"; DROP TABLE hotels;--]",
+    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
+    "groups" : [ "security", "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 725,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 3,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[{{7*7}}${7*7}]",
+    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
+    "groups" : [ "security", "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 238,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 4,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[../../../../etc/passwd]",
+    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
+    "groups" : [ "security", "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 568,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 5,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#malformedBodyIsRejectedGracefully",
+    "description" : "Malformed JSON body is rejected without a server error",
+    "groups" : [ "negative", "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 219,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#queryIsNormalised",
+    "description" : "Case and surrounding whitespace do not change what the user gets",
+    "groups" : [ "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 597,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#respondsWithinLatencyObjective",
+    "description" : "Suggestions arrive within the latency objective (typing feels instant)",
+    "groups" : [ "search", "performance", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 516,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#resultCountHonoursRequestedSize",
+    "description" : "Never returns more suggestions than requested",
+    "groups" : [ "search", "autocomplete", "contract" ],
+    "status" : "PASSED",
+    "durationMs" : 245,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Cairo, expectedInLabel=Egypt, countryCode=eg, demandCityId=-290692]]",
+    "description" : "Top suggestion is the right city in the right country",
+    "groups" : [ "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 278,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Paris, expectedInLabel=France, countryCode=fr, demandCityId=-1456928]]",
+    "description" : "Top suggestion is the right city in the right country",
+    "groups" : [ "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 240,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 2,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Amsterdam, expectedInLabel=Netherlands, countryCode=nl, demandCityId=-2140479]]",
+    "description" : "Top suggestion is the right city in the right country",
+    "groups" : [ "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 233,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 3,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Dubai, expectedInLabel=United Arab Emirates, countryCode=ae, demandCityId=-782831]]",
+    "description" : "Top suggestion is the right city in the right country",
+    "groups" : [ "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 272,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 4,
+    "phase" : "regression"
+  }, {
+    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Tokyo, expectedInLabel=Japan, countryCode=jp, demandCityId=-246227]]",
+    "description" : "Top suggestion is the right city in the right country",
+    "groups" : [ "search", "autocomplete" ],
+    "status" : "PASSED",
+    "durationMs" : 277,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 5,
+    "phase" : "regression"
+  }, {
+    "id" : "DemandApiAuthTest#errorsDoNotLeakInternals",
+    "description" : "Error responses do not leak implementation details",
+    "groups" : [ "security", "negative", "demand-auth", "checkout" ],
+    "status" : "PASSED",
+    "durationMs" : 188,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "DemandApiAuthTest#orderPreviewWithoutCredentialsIsRefused",
+    "description" : "Checkout (order preview) without credentials is refused",
+    "groups" : [ "security", "negative", "demand-auth", "checkout" ],
+    "status" : "PASSED",
+    "durationMs" : 174,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "DemandApiAuthTest#searchWithInvalidTokenIsRefused",
+    "description" : "Search with an invalid bearer token is refused",
+    "groups" : [ "security", "negative", "demand-auth", "checkout" ],
+    "status" : "PASSED",
+    "durationMs" : 189,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "DemandApiAuthTest#wrongHttpMethodIsRejected",
+    "description" : "Wrong HTTP method on a POST-only endpoint is neither served nor crashes",
+    "groups" : [ "security", "negative", "demand-auth", "checkout" ],
+    "status" : "PASSED",
+    "durationMs" : 177,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "Scenario: Checkout is refused without partner credentials",
+    "description" : "Runs Cucumber Scenarios",
+    "groups" : [ "cucumber" ],
+    "status" : "PASSED",
+    "durationMs" : 265,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "Scenario: The search box suggests the city I typed first",
+    "description" : "Runs Cucumber Scenarios",
+    "groups" : [ "cucumber" ],
+    "status" : "PASSED",
+    "durationMs" : 273,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 2,
+    "phase" : "regression"
+  }, {
+    "id" : "Scenario: The search box suggests the city I typed first",
+    "description" : "Runs Cucumber Scenarios",
+    "groups" : [ "cucumber" ],
+    "status" : "PASSED",
+    "durationMs" : 270,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 3,
+    "phase" : "regression"
+  } ],
+  "healing" : [ {
+    "probe" : "autocomplete-city",
+    "reason" : "no baseline recorded yet",
+    "proposedFile" : "target/autonomous/healing/live/autocomplete-city.json",
+    "accepted" : false
+  }, {
+    "probe" : "autocomplete-unicode",
+    "reason" : "no baseline recorded yet",
+    "proposedFile" : "target/autonomous/healing/live/autocomplete-unicode.json",
+    "accepted" : false
+  }, {
+    "probe" : "autocomplete-empty",
+    "reason" : "no baseline recorded yet",
+    "proposedFile" : "target/autonomous/healing/live/autocomplete-empty.json",
+    "accepted" : false
+  }, {
+    "probe" : "demand-search-anonymous",
+    "reason" : "no baseline recorded yet",
+    "proposedFile" : "target/autonomous/healing/live/demand-search-anonymous.json",
+    "accepted" : false
+  }, {
+    "probe" : "demand-orders-preview-anonymous",
+    "reason" : "no baseline recorded yet",
+    "proposedFile" : "target/autonomous/healing/live/demand-orders-preview-anonymous.json",
+    "accepted" : false
+  } ],
+  "aiAdvice" : null
+}
