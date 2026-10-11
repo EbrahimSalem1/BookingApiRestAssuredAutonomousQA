@@ -34,9 +34,9 @@ jobs:
       DEMAND_AFFILIATE_ID: ${{ secrets.DEMAND_AFFILIATE_ID }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
@@ -59,8 +59,9 @@ jobs:
         if: always()
         run: mvn -B -ntp -q allure:report || echo "Allure report generation skipped"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: always()
+        continue-on-error: true   # account artifact quota must not fail a QA verdict
         with:
           name: autonomous-${{ env.QA_ENV }}-${{ github.run_id }}
           path: |
@@ -73,26 +74,7 @@ jobs:
         if: always() && github.event_name != 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
-          VERDICT: ${{ steps.verdict.outputs.value }}
-        run: |
-          set -e
-          [ -f target/autonomous/report.md ] || { echo "no report to publish"; exit 0; }
-          remote="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          rm -rf /tmp/pub
-          if git clone -q --depth 1 --branch qa-reports "$remote" /tmp/pub 2>/dev/null; then :; else
-            mkdir -p /tmp/pub && cd /tmp/pub && git init -q -b qa-reports && git remote add origin "$remote" && cd - >/dev/null
-          fi
-          mkdir -p "/tmp/pub/$QA_ENV/history"
-          cp target/autonomous/report.md "/tmp/pub/$QA_ENV/latest.md"
-          cp target/autonomous/report.json "/tmp/pub/$QA_ENV/latest.json"
-          cp target/autonomous/report.md "/tmp/pub/$QA_ENV/history/$(date -u +%Y%m%dT%H%M%SZ)-$VERDICT.md"
-          if [ -d target/autonomous/healing ]; then rm -rf "/tmp/pub/$QA_ENV/healing"; cp -r target/autonomous/healing "/tmp/pub/$QA_ENV/healing"; fi
-          cd /tmp/pub
-          git config user.name "autonomous-qa[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -q -m "QA report ($QA_ENV): $VERDICT [run ${GITHUB_RUN_ID}]" || { echo "nothing to commit"; exit 0; }
-          git push -q origin qa-reports
+        run: scripts/publish-report.sh "$QA_ENV" "${{ steps.verdict.outputs.value }}"
 
       - name: Open or update an issue when the verdict is FAIL
         if: steps.verdict.outputs.value == 'FAIL' && github.event_name != 'pull_request' && github.event_name != 'push'

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # quality gate publishes its triage to the qa-reports branch
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -19,9 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
@@ -36,12 +36,26 @@ jobs:
       - name: Autonomous agent dry run against the mock
         run: mvn -B -ntp exec:java -Dqa.env=mock
 
+      - name: Test totals
+        if: always()
+        run: |
+          totals=$(grep -o '<testng-results[^>]*>' target/surefire-reports/testng-results.xml || echo "no testng results")
+          echo "::notice title=TestNG totals (mock)::$totals"
+          echo "### TestNG totals (mock)" >> "$GITHUB_STEP_SUMMARY"; echo "\`$totals\`" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish triage to the qa-reports branch
+        if: always() && github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: scripts/publish-report.sh mock "$(cat target/autonomous/verdict.txt 2>/dev/null || echo ERROR)"
+
       - name: Allure HTML report
         if: always()
         run: mvn -B -ntp -q allure:report || echo "Allure report generation skipped"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         if: always()
+        continue-on-error: true   # account artifact quota must not fail the gate
         with:
           name: mock-results
           path: |
