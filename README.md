@@ -48,7 +48,6 @@ mvn allure:serve
 |---|---|
 | `-Dqa.env=live\|sandbox\|mock` | Target environment (default `live`) |
 | `-Dsuite=smoke` | Smoke suite only (`src/test/resources/suites/smoke.xml`) |
-| `-Dgroups=security` | Run one intent group across all surfaces (`smoke`, `contract`, `negative`, `security`, `performance`) |
 | `-Dcucumber.filter.tags="@autocomplete"` | Filter BDD scenarios |
 | `-Dguard.bot.block.policy=fail` | Treat a bot-protection challenge as a failure (for allow-listed networks) |
 | `-Dagent.heal.accept=true` | Let the agent write proposed contract baselines into `src/main/resources` |
@@ -164,8 +163,9 @@ scripts/               publish-report.sh (qa-reports branch)
 | `ENVIRONMENT_BLOCKED` | no | no | Bot protection answered instead of the app |
 | `PRECONDITION_NOT_MET` | no | no | Missing credentials / not applicable |
 
-**Verdict:** `FAIL` if anything blocking failed. `INCONCLUSIVE` if most product checks could not
-run, or a surface was unreachable or fully challenged. Otherwise `PASS`.
+**Verdict:** `FAIL` if anything blocking failed. `INCONCLUSIVE` if a smoke (critical-path) check
+was blocked by bot protection, most product checks could not run, or a surface was unreachable or
+fully challenged. Otherwise `PASS`.
 
 ---
 
@@ -197,7 +197,7 @@ run, or a surface was unreachable or fully challenged. Otherwise `PASS`.
 | Run | Checks | Outcome |
 |---|---|---|
 | Quality gate, `mock` | 73 | 72 passed, 1 skipped (HTTP->HTTPS redirect is not applicable to a localhost mock). Agent verdict **PASS** |
-| Autonomous, `live` | 48 executed + 17 probes | 48 passed. Verdict **INCONCLUSIVE**: the HTML pages are AWS-WAF-challenged from GitHub runners (`web` excluded with a reason), and there are no Demand API partner credentials (`demand-partner` excluded). Autocomplete and the Demand API auth gate are fully verified live. |
+| Autonomous, `live` | ~50-65 executed + 17 probes | 0 failures. Verdict **INCONCLUSIVE**: GitHub runners get AWS WAF challenges on the HTML pages (fully or partly, so `web` checks are skipped as `ENV_BLOCKED` or the whole surface is excluded), and there are no Demand API partner credentials (`demand-partner` excluded). Autocomplete and the Demand API auth gate are fully verified live. |
 
 Every run's report is versioned on the [`qa-reports`](../../tree/qa-reports) branch
 (`mock/`, `live/`: `report.md`, `report.json`, history, healing proposals).

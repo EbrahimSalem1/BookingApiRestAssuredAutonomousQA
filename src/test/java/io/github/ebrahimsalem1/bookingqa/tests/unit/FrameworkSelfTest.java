@@ -126,6 +126,12 @@ public class FrameworkSelfTest {
         assertThat(Verdict.of(List.of(pass, pass, slow))).isEqualTo(Verdict.PASS);
         assertThat(Verdict.of(List.of(pass, defect))).isEqualTo(Verdict.FAIL);
         assertThat(Verdict.of(List.of(pass, skip, skip, skip))).isEqualTo(Verdict.INCONCLUSIVE);
+
+        TestOutcome blockedSmoke = new TestOutcome("Smoke#blocked", "", List.of("web", "smoke"), TestOutcome.Status.SKIPPED,
+                10, FailureCategory.ENVIRONMENT_BLOCKED, "challenged", 202, 1, "smoke");
+        assertThat(Verdict.of(List.of(pass, pass, pass, pass, blockedSmoke)))
+                .as("a blocked critical-path check is never a green")
+                .isEqualTo(Verdict.INCONCLUSIVE);
     }
 
     private static Observation observation(String probe, String target, Observation.Health health, String blocked) {

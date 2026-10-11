@@ -123,8 +123,8 @@ public final class AutonomousQaAgent {
         return switch (verdict) {
             case FAIL -> blocking + " blocking failure(s): " + outcomes.stream().filter(TestOutcome::blocking)
                     .map(o -> o.category() + " " + o.id()).limit(5).toList();
-            case INCONCLUSIVE -> "Too few checks could exercise the product (most were skipped); see triage and excluded surfaces "
-                    + plan.excludedGroups().keySet();
+            case INCONCLUSIVE -> "A critical-path (smoke) check was blocked by bot protection, or too few checks could "
+                    + "exercise the product; see triage and excluded surfaces " + plan.excludedGroups().keySet();
             case PASS -> "All executed checks passed";
         };
     }

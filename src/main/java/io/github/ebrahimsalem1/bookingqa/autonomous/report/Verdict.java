@@ -1,6 +1,7 @@
 package io.github.ebrahimsalem1.bookingqa.autonomous.report;
 
 import io.github.ebrahimsalem1.bookingqa.autonomous.ledger.TestOutcome;
+import io.github.ebrahimsalem1.bookingqa.autonomous.triage.FailureCategory;
 
 import java.util.List;
 
@@ -9,7 +10,8 @@ import java.util.List;
  * <ul>
  *   <li>PASS: nothing blocking failed and enough checks actually exercised the product.</li>
  *   <li>INCONCLUSIVE: nothing blocking failed, but most checks were skipped (blocked network,
- *       missing credentials). Explicitly not a green: absence of evidence is not evidence.</li>
+ *       missing credentials), or a smoke (critical path) check was blocked by bot protection.
+ *       Explicitly not a green: absence of evidence is not evidence.</li>
  *   <li>FAIL: at least one blocking failure (functional, contract, 5xx, test defect).</li>
  * </ul>
  */
@@ -27,7 +29,10 @@ public enum Verdict {
                 .filter(o -> !o.groups().contains("unit"))
                 .filter(o -> o.status() != TestOutcome.Status.SKIPPED)
                 .count();
-        if (executed == 0 || (productChecks > 0 && productExecuted * 2 < productChecks)) {
+        boolean criticalPathBlocked = finals.stream().anyMatch(o -> o.status() == TestOutcome.Status.SKIPPED
+                && o.groups().contains("smoke")
+                && o.category() == FailureCategory.ENVIRONMENT_BLOCKED);
+        if (executed == 0 || criticalPathBlocked || (productChecks > 0 && productExecuted * 2 < productChecks)) {
             return INCONCLUSIVE;
         }
         return PASS;

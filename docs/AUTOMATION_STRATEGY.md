@@ -65,7 +65,7 @@
 
 * **TestNG groups = surfaces and intents.** Surfaces: `autocomplete`, `web`, `demand-auth`,
   `demand-partner`. Intents: `smoke`, `contract`, `negative`, `security`, `performance`. The
-  planner switches surfaces on and off; humans pick intents (`-Dgroups=security`).
+  planner switches surfaces on and off; intents label why a check exists and drive the smoke phase.
 * **Cucumber mirrors the surfaces with tags** (`@web`, `@autocomplete`, `@demand-partner`,
   `@demand-auth`), so one planner decision applies to both layers.
 * **Clients own HTTP, tests own intent.** Tests never build URLs or headers. Every call goes through
