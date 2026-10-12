@@ -2,29 +2,29 @@
 
 **Verdict: INCONCLUSIVE**: Everything that ran passed, but at least one surface could not be exercised from this network: [web, demand-partner]
 
-Started 2026-10-11T16:00:44Z, finished 2026-10-11T16:00:59Z.
+Started 2026-10-12T10:48:45Z, finished 2026-10-12T10:48:58Z.
 
 ## 1. Observe: exploration probes
 
 | Probe | Area | Risk | Health | HTTP | Latency (ms) | Note |
 |---|---|---|---|---|---|---|
-| `autocomplete-city` | search | 5 | HEALTHY | 200 | 568 | Matches baseline |
-| `autocomplete-unicode` | search | 3 | HEALTHY | 200 | 230 | Matches baseline |
-| `autocomplete-empty` | search | 2 | HEALTHY | 200 | 212 | Matches baseline |
-| `search-results-page` | search | 5 | BLOCKED | 202 | 187 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `search-results-past-dates` | search | 3 | BLOCKED | 202 | 91 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `front-door` | platform | 4 | BLOCKED | 202 | 91 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 343 | Matches baseline |
-| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 166 | Matches baseline |
+| `autocomplete-city` | search | 5 | HEALTHY | 200 | 461 | Matches baseline |
+| `autocomplete-unicode` | search | 3 | HEALTHY | 200 | 159 | Matches baseline |
+| `autocomplete-empty` | search | 2 | HEALTHY | 200 | 164 | Matches baseline |
+| `search-results-page` | search | 5 | BLOCKED | 202 | 236 | Bot challenge page (HTTP 202, marker 'awswaf') |
+| `search-results-past-dates` | search | 3 | BLOCKED | 202 | 59 | Bot challenge page (HTTP 202, marker 'awswaf') |
+| `front-door` | platform | 4 | BLOCKED | 202 | 58 | Bot challenge page (HTTP 202, marker 'awswaf') |
+| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 277 | Matches baseline |
+| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 118 | Matches baseline |
 | `demand-search` | checkout | 5 | NOT_PROBED | - | - | No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID) |
-| `autocomplete-typo` | search | 3 | HEALTHY | 200 | 206 | Matches baseline |
-| `autocomplete-ambiguous` | search | 3 | HEALTHY | 200 | 217 | Matches baseline |
-| `autocomplete-localised` | search | 2 | HEALTHY | 200 | 203 | Matches baseline |
-| `autocomplete-size-zero` | search | 2 | HEALTHY | 200 | 227 | Matches baseline |
-| `autocomplete-size-huge` | search | 2 | HEALTHY | 200 | 726 | Matches baseline |
-| `autocomplete-wrong-type` | search | 2 | HEALTHY | 200 | 219 | Matches baseline |
-| `autocomplete-get-method` | search | 1 | HEALTHY | 200 | 236 | Matches baseline |
-| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 401 | 172 | Matches baseline |
+| `autocomplete-typo` | search | 3 | HEALTHY | 200 | 180 | Matches baseline |
+| `autocomplete-ambiguous` | search | 3 | HEALTHY | 200 | 166 | Matches baseline |
+| `autocomplete-localised` | search | 2 | HEALTHY | 200 | 173 | Matches baseline |
+| `autocomplete-size-zero` | search | 2 | HEALTHY | 200 | 171 | Matches baseline |
+| `autocomplete-size-huge` | search | 2 | HEALTHY | 200 | 650 | Matches baseline |
+| `autocomplete-wrong-type` | search | 2 | HEALTHY | 200 | 159 | Matches baseline |
+| `autocomplete-get-method` | search | 1 | HEALTHY | 200 | 160 | Matches baseline |
+| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 401 | 122 | Matches baseline |
 
 <details><summary>Headers observed on the front door</summary>
 
