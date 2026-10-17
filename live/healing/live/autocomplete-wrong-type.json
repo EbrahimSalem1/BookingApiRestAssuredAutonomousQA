@@ -1,0 +1,1 @@
+[ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ]
