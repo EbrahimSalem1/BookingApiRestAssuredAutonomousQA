@@ -2,56 +2,56 @@
 
 **Verdict: FAIL**: 12 blocking failure(s): [FUNCTIONAL_DEFECT AutocompleteApiTest#cityQueryReturnsTheCityFirst, FUNCTIONAL_DEFECT AutocompleteApiTest#arabicScriptQueryIsSupported, FUNCTIONAL_DEFECT AutocompleteApiTest#queryIsNormalised, FUNCTIONAL_DEFECT AutocompleteApiTest#respondsWithinLatencyObjective, FUNCTIONAL_DEFECT AutocompleteApiTest#resultCountHonoursRequestedSize]
 
-Started 2026-10-22T08:36:10Z, finished 2026-10-22T08:36:26Z.
+Started 2026-10-23T08:32:38Z, finished 2026-10-23T08:33:04Z.
 
 ## 1. Observe: exploration probes
 
 | Probe | Area | Risk | Health | HTTP | Latency (ms) | Note |
 |---|---|---|---|---|---|---|
-| `autocomplete-city` | search | 5 | UNEXPECTED_STATUS | 403 | 459 | Expected [200] but got 403 |
-| `autocomplete-unicode` | search | 3 | UNEXPECTED_STATUS | 403 | 227 | Expected [200] but got 403 |
-| `autocomplete-empty` | search | 2 | UNEXPECTED_STATUS | 403 | 226 | Expected [200, 400, 422] but got 403 |
-| `search-results-page` | search | 5 | BLOCKED | 202 | 295 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `search-results-past-dates` | search | 3 | BLOCKED | 202 | 719 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `front-door` | platform | 4 | BLOCKED | 202 | 269 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 2010 | Matches baseline |
-| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 214 | Matches baseline |
+| `autocomplete-city` | search | 5 | UNEXPECTED_STATUS | 403 | 551 | Expected [200] but got 403 |
+| `autocomplete-unicode` | search | 3 | UNEXPECTED_STATUS | 403 | 256 | Expected [200] but got 403 |
+| `autocomplete-empty` | search | 2 | UNEXPECTED_STATUS | 403 | 227 | Expected [200, 400, 422] but got 403 |
+| `search-results-page` | search | 5 | HEALTHY | 200 | 1239 | HTML surface (status, headers and latency tracked; no JSON shape) |
+| `search-results-past-dates` | search | 3 | HEALTHY | 200 | 880 | HTML surface (status, headers and latency tracked; no JSON shape) |
+| `front-door` | platform | 4 | HEALTHY | 301 | 270 | HTML surface (status, headers and latency tracked; no JSON shape) |
+| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 354 | Matches baseline |
+| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 185 | Matches baseline |
 | `demand-search` | checkout | 5 | NOT_PROBED | - | - | No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID) |
-| `autocomplete-typo` | search | 3 | UNEXPECTED_STATUS | 403 | 223 | Expected [200] but got 403 |
-| `autocomplete-ambiguous` | search | 3 | UNEXPECTED_STATUS | 403 | 218 | Expected [200] but got 403 |
-| `autocomplete-localised` | search | 2 | UNEXPECTED_STATUS | 403 | 213 | Expected [200] but got 403 |
-| `autocomplete-size-zero` | search | 2 | UNEXPECTED_STATUS | 403 | 227 | Expected [200, 400, 422] but got 403 |
-| `autocomplete-size-huge` | search | 2 | UNEXPECTED_STATUS | 403 | 222 | Expected [200, 400, 422] but got 403 |
-| `autocomplete-wrong-type` | search | 2 | UNEXPECTED_STATUS | 403 | 214 | Expected [200, 400, 422] but got 403 |
-| `autocomplete-get-method` | search | 1 | UNEXPECTED_STATUS | 403 | 220 | Expected [200, 400, 404, 405] but got 403 |
-| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 401 | 161 | Matches baseline |
+| `autocomplete-typo` | search | 3 | UNEXPECTED_STATUS | 403 | 246 | Expected [200] but got 403 |
+| `autocomplete-ambiguous` | search | 3 | UNEXPECTED_STATUS | 403 | 228 | Expected [200] but got 403 |
+| `autocomplete-localised` | search | 2 | UNEXPECTED_STATUS | 403 | 222 | Expected [200] but got 403 |
+| `autocomplete-size-zero` | search | 2 | UNEXPECTED_STATUS | 403 | 248 | Expected [200, 400, 422] but got 403 |
+| `autocomplete-size-huge` | search | 2 | UNEXPECTED_STATUS | 403 | 218 | Expected [200, 400, 422] but got 403 |
+| `autocomplete-wrong-type` | search | 2 | UNEXPECTED_STATUS | 403 | 217 | Expected [200, 400, 422] but got 403 |
+| `autocomplete-get-method` | search | 1 | UNEXPECTED_STATUS | 403 | 224 | Expected [200, 400, 404, 405] but got 403 |
+| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 401 | 189 | Matches baseline |
 
 <details><summary>Headers observed on the front door</summary>
 
 - `strict-transport-security`: max-age=63072000; includeSubDomains; preload
-- `server`: istio-envoy
+- `x-content-type-options`: nosniff
+- `x-frame-options`: SAMEORIGIN
+- `server`: envoy
 - `x-cache`: Miss from cloudfront
+- `location`: https://www.booking.com/index.en-gb.html?aid=304142&label=mkt123sc-efaa826b-cfa9-4dc8-b90a-6c04e2febab1
+- `cache-control`: private
 
 </details>
 
 ## 2. Plan: decisions and reasons
 
-**Surface health:** `autocomplete`=HEALTHY  `web`=BLOCKED  `demand-auth`=HEALTHY  `demand-partner`=NOT_PROBED  
+**Surface health:** `autocomplete`=HEALTHY  `web`=HEALTHY  `demand-auth`=HEALTHY  `demand-partner`=NOT_PROBED  
 
-**Risk ranking:** search (risk score 66) > checkout (risk score 17) > platform (risk score 8)
+**Risk ranking:** search (risk score 58) > checkout (risk score 17) > platform (risk score 4)
 
 | Excluded group | Why |
 |---|---|
-| `web` | every probe was challenged by bot protection: Bot challenge page (HTTP 202, marker 'awswaf') |
 | `demand-partner` | No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID) |
 
 **Look here first:**
 
 - [UNEXPECTED_STATUS] autocomplete-city (risk 5): Expected [200] but got 403
-- [BLOCKED] search-results-page (risk 5): Edge protection challenged the probe; checks on this surface are inconclusive from this network
-- [BLOCKED] front-door (risk 4): Edge protection challenged the probe; checks on this surface are inconclusive from this network
 - [UNEXPECTED_STATUS] autocomplete-unicode (risk 3): Expected [200] but got 403
-- [BLOCKED] search-results-past-dates (risk 3): Edge protection challenged the probe; checks on this surface are inconclusive from this network
 - [UNEXPECTED_STATUS] autocomplete-typo (risk 3): Expected [200] but got 403
 - [UNEXPECTED_STATUS] autocomplete-ambiguous (risk 3): Expected [200] but got 403
 - [UNEXPECTED_STATUS] autocomplete-empty (risk 2): Expected [200, 400, 422] but got 403
@@ -63,14 +63,14 @@ Started 2026-10-22T08:36:10Z, finished 2026-10-22T08:36:26Z.
 
 ## 3. Execute
 
-- Phase `smoke`: 1 passed, 1 failed, 0 skipped (pass rate 50%, threshold 50%)
-- Phase `regression`: 35 passed, 11 failed, 0 skipped, 0 transient retries
+- Phase `smoke`: 2 passed, 1 failed, 1 skipped (pass rate 67%, threshold 50%)
+- Phase `regression`: 43 passed, 11 failed, 6 skipped, 0 transient retries
 
 ## 4. Triage
 
 | Passed | Failed | Skipped | Retried |
 |---|---|---|---|
-| 36 | 12 | 0 | 0 |
+| 45 | 12 | 7 | 0 |
 
 | Status | Category | Blocking | Check | Reason |
 |---|---|---|---|---|
@@ -86,6 +86,13 @@ Started 2026-10-22T08:36:10Z, finished 2026-10-22T08:36:26Z.
 | FAILED | FUNCTIONAL_DEFECT | yes | `AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Tokyo, expectedInLabel=Japan, countryCode=jp, demandCityId=-246227]]` | 1 expectation failed. |
 | FAILED | FUNCTIONAL_DEFECT | yes | `Scenario: The search box suggests the city I typed first` | 1 expectation failed. |
 | FAILED | FUNCTIONAL_DEFECT | yes | `Scenario: The search box suggests the city I typed first` | 1 expectation failed. |
+| SKIPPED | ENVIRONMENT_BLOCKED | no | `SearchResultsPageTest#validSearchReturnsResultsPage` | [ENV_BLOCKED] booking.com edge protection answered instead of the application: Bot challenge page (HTTP 202, marker 'awswaf') |
+| SKIPPED | ENVIRONMENT_BLOCKED | no | `SearchResultsPageTest#destinationIsNotReflectedAsMarkup` | [ENV_BLOCKED] booking.com edge protection answered instead of the application: Bot challenge page (HTTP 202, marker 'awswaf') |
+| SKIPPED | ENVIRONMENT_BLOCKED | no | `SearchResultsPageTest#invalidCriteriaAreHandledGracefully[zero adults, 'Cairo' 2026-12-07 -> 2026-12-09, 0 adults]` | [ENV_BLOCKED] booking.com edge protection answered instead of the application: Bot challenge page (HTTP 202, marker 'awswaf') |
+| SKIPPED | ENVIRONMENT_BLOCKED | no | `SearchResultsPageTest#invalidCriteriaAreHandledGracefully[stay longer than a year, 'Cairo' 2026-12-07 -> 2028-01-11, 2 adults]` | [ENV_BLOCKED] booking.com edge protection answered instead of the application: Bot challenge page (HTTP 202, marker 'awswaf') |
+| SKIPPED | ENVIRONMENT_BLOCKED | no | `SearchResultsPageTest#invalidCriteriaAreHandledGracefully[empty destination, '' 2026-12-07 -> 2026-12-09, 2 adults]` | [ENV_BLOCKED] booking.com edge protection answered instead of the application: Bot challenge page (HTTP 202, marker 'awswaf') |
+| SKIPPED | ENVIRONMENT_BLOCKED | no | `SearchResultsPageTest#malformedParametersAreHandledGracefully` | [ENV_BLOCKED] booking.com edge protection answered instead of the application: Bot challenge page (HTTP 202, marker 'awswaf') |
+| SKIPPED | ENVIRONMENT_BLOCKED | no | `SearchResultsPageTest#resultsPageWithinLatencyObjective` | [ENV_BLOCKED] booking.com edge protection answered instead of the application: Bot challenge page (HTTP 202, marker 'awswaf') |
 
 ## 5. Heal: contract baselines
 
