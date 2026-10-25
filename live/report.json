@@ -1,9 +1,9 @@
 {
   "environment" : "live",
-  "startedAt" : "2026-10-25T11:52:33Z",
-  "finishedAt" : "2026-10-25T11:52:51Z",
-  "verdict" : "FAIL",
-  "verdictReason" : "12 blocking failure(s): [FUNCTIONAL_DEFECT AutocompleteApiTest#cityQueryReturnsTheCityFirst, FUNCTIONAL_DEFECT AutocompleteApiTest#arabicScriptQueryIsSupported, FUNCTIONAL_DEFECT AutocompleteApiTest#queryIsNormalised, FUNCTIONAL_DEFECT AutocompleteApiTest#respondsWithinLatencyObjective, FUNCTIONAL_DEFECT AutocompleteApiTest#resultCountHonoursRequestedSize]",
+  "startedAt" : "2026-10-25T11:56:55Z",
+  "finishedAt" : "2026-10-25T11:57:02Z",
+  "verdict" : "INCONCLUSIVE",
+  "verdictReason" : "Everything that ran passed, but at least one surface could not be exercised from this network: [autocomplete, web, demand-partner]",
   "observations" : [ {
     "probe" : "autocomplete-city",
     "target" : "autocomplete",
@@ -11,10 +11,10 @@
     "risk" : 5,
     "request" : "POST autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 467,
+    "latencyMs" : 439,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -23,16 +23,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "autocomplete-unicode",
     "target" : "autocomplete",
@@ -40,10 +40,10 @@
     "risk" : 3,
     "request" : "POST autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 250,
+    "latencyMs" : 172,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -52,16 +52,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "autocomplete-empty",
     "target" : "autocomplete",
@@ -69,10 +69,10 @@
     "risk" : 2,
     "request" : "POST autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 236,
+    "latencyMs" : 168,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -81,16 +81,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200, 400, 422] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "search-results-page",
     "target" : "web",
@@ -98,13 +98,13 @@
     "risk" : 5,
     "request" : "GET web/searchresults.html {ss=Cairo, checkin=2026-12-09, checkout=2026-12-12, group_adults=2, no_rooms=1, group_children=0, lang=en-gb}",
     "status" : 202,
-    "latencyMs" : 351,
+    "latencyMs" : 368,
     "contentType" : "text/html",
     "bytes" : 3962,
     "blockedReason" : "Bot challenge page (HTTP 202, marker 'awswaf')",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
-      "server" : "istio-envoy",
+      "server" : "nginx",
       "x-cache" : "Miss from cloudfront"
     },
     "shape" : [ ],
@@ -124,13 +124,13 @@
     "risk" : 3,
     "request" : "GET web/searchresults.html {ss=Cairo, checkin=2024-12-09, checkout=2026-12-09, group_adults=2, no_rooms=1, lang=en-gb}",
     "status" : 202,
-    "latencyMs" : 297,
+    "latencyMs" : 283,
     "contentType" : "text/html",
     "bytes" : 3962,
     "blockedReason" : "Bot challenge page (HTTP 202, marker 'awswaf')",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
-      "server" : "istio-envoy",
+      "server" : "nginx",
       "x-cache" : "Miss from cloudfront"
     },
     "shape" : [ ],
@@ -150,9 +150,9 @@
     "risk" : 4,
     "request" : "GET web/",
     "status" : 202,
-    "latencyMs" : 277,
+    "latencyMs" : 274,
     "contentType" : "text/html",
-    "bytes" : 7033,
+    "bytes" : 3962,
     "blockedReason" : "Bot challenge page (HTTP 202, marker 'awswaf')",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
@@ -176,7 +176,7 @@
     "risk" : 5,
     "request" : "POST demand-anonymous/accommodations/search",
     "status" : 401,
-    "latencyMs" : 903,
+    "latencyMs" : 340,
     "contentType" : "",
     "bytes" : 0,
     "blockedReason" : null,
@@ -202,7 +202,7 @@
     "risk" : 5,
     "request" : "POST demand-anonymous/orders/preview",
     "status" : 401,
-    "latencyMs" : 632,
+    "latencyMs" : 100,
     "contentType" : "",
     "bytes" : 0,
     "blockedReason" : null,
@@ -250,10 +250,10 @@
     "risk" : 3,
     "request" : "POST autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 221,
+    "latencyMs" : 147,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -262,16 +262,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "autocomplete-ambiguous",
     "target" : "autocomplete",
@@ -279,10 +279,10 @@
     "risk" : 3,
     "request" : "POST autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 218,
+    "latencyMs" : 148,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -291,16 +291,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "autocomplete-localised",
     "target" : "autocomplete",
@@ -308,10 +308,10 @@
     "risk" : 2,
     "request" : "POST autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 241,
+    "latencyMs" : 169,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -320,16 +320,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "autocomplete-size-zero",
     "target" : "autocomplete",
@@ -337,10 +337,10 @@
     "risk" : 2,
     "request" : "POST autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 231,
+    "latencyMs" : 140,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -349,16 +349,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200, 400, 422] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "autocomplete-size-huge",
     "target" : "autocomplete",
@@ -366,10 +366,10 @@
     "risk" : 2,
     "request" : "POST autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 223,
+    "latencyMs" : 153,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -378,16 +378,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200, 400, 422] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "autocomplete-wrong-type",
     "target" : "autocomplete",
@@ -395,10 +395,10 @@
     "risk" : 2,
     "request" : "POST autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 236,
+    "latencyMs" : 154,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -407,16 +407,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].match:string", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$.results[].b_max_los_data.defaultLos:number", "$.results[].b_max_los_data.experiment:string", "$.results[].b_max_los_data.extendedLos:number", "$.results[].b_max_los_data.fullOn:boolean", "$.results[].b_max_los_data:object", "$.results[].b_show_entire_homes_checkbox:boolean", "$.results[].cc1:string", "$.results[].cjk:boolean", "$.results[].dest_id:string", "$.results[].dest_type:string", "$.results[].label1:string", "$.results[].label2:string", "$.results[].label:string", "$.results[].labels:array", "$.results[].labels[].dest_id:string", "$.results[].labels[].dest_type:string", "$.results[].labels[].hl:number", "$.results[].labels[].match:string", "$.results[].labels[].precomposed:string", "$.results[].labels[].text:string", "$.results[].labels[]:object", "$.results[].latitude:number", "$.results[].lc:string", "$.results[].longitude:number", "$.results[].nr_homes:number", "$.results[].nr_hotels:number", "$.results[].nr_hotels_25:number", "$.results[].photo_uri:string", "$.results[].roundtrip:string", "$.results[].rtl:boolean", "$.results[].value:string", "$.results[]:object", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200, 400, 422] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "autocomplete-get-method",
     "target" : "autocomplete",
@@ -424,10 +424,10 @@
     "risk" : 1,
     "request" : "GET autocomplete/autocomplete.json",
     "status" : 403,
-    "latencyMs" : 646,
+    "latencyMs" : 151,
     "contentType" : "application/json",
     "bytes" : 89,
-    "blockedReason" : null,
+    "blockedReason" : "Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
     "notableHeaders" : {
       "strict-transport-security" : "max-age=63072000; includeSubDomains; preload",
       "x-content-type-options" : "nosniff",
@@ -436,16 +436,16 @@
       "x-cache" : "Error from cloudfront",
       "cache-control" : "must-revalidate,no-cache,no-store"
     },
-    "shape" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string", "$:object" ],
+    "shape" : [ ],
     "drift" : {
       "baselineFound" : true,
-      "added" : [ "$.message:string", "$.servlet:string", "$.status:string", "$.url:string" ],
-      "removed" : [ "$.results:array" ]
+      "added" : [ ],
+      "removed" : [ "$.results:array", "$:object" ]
     },
     "error" : null,
-    "health" : "UNEXPECTED_STATUS",
-    "note" : "Expected [200, 400, 404, 405] but got 403",
-    "excerpt" : "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}"
+    "health" : "BLOCKED",
+    "note" : "Edge protection challenged the probe; checks on this surface are inconclusive from this network",
+    "excerpt" : null
   }, {
     "probe" : "demand-get-method-anonymous",
     "target" : "demand-anonymous",
@@ -453,7 +453,7 @@
     "risk" : 2,
     "request" : "GET demand-anonymous/accommodations/search",
     "status" : 401,
-    "latencyMs" : 196,
+    "latencyMs" : 107,
     "contentType" : "",
     "bytes" : 0,
     "blockedReason" : null,
@@ -475,38 +475,28 @@
   } ],
   "plan" : {
     "surfaceHealth" : {
-      "autocomplete" : "HEALTHY",
+      "autocomplete" : "BLOCKED",
       "web" : "BLOCKED",
       "demand-auth" : "HEALTHY",
       "demand-partner" : "NOT_PROBED"
     },
-    "includedGroups" : [ "unit", "smoke", "cucumber", "autocomplete", "demand-auth", "search", "checkout", "contract", "negative", "security", "performance" ],
+    "includedGroups" : [ "unit", "smoke", "cucumber", "demand-auth", "search", "checkout", "contract", "negative", "security", "performance" ],
     "excludedGroups" : {
+      "autocomplete" : "every probe was challenged by bot protection: Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)",
       "web" : "every probe was challenged by bot protection: Bot challenge page (HTTP 202, marker 'awswaf')",
       "demand-partner" : "No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID)"
     },
-    "cucumberTags" : "not @web and not @demand-partner",
+    "cucumberTags" : "not @autocomplete and not @web and not @demand-partner",
     "riskRanking" : [ "search (risk score 66)", "checkout (risk score 17)", "platform (risk score 8)" ],
-    "attention" : [ "[UNEXPECTED_STATUS] autocomplete-city (risk 5): Expected [200] but got 403", "[BLOCKED] search-results-page (risk 5): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] front-door (risk 4): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[UNEXPECTED_STATUS] autocomplete-unicode (risk 3): Expected [200] but got 403", "[BLOCKED] search-results-past-dates (risk 3): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[UNEXPECTED_STATUS] autocomplete-typo (risk 3): Expected [200] but got 403", "[UNEXPECTED_STATUS] autocomplete-ambiguous (risk 3): Expected [200] but got 403", "[UNEXPECTED_STATUS] autocomplete-empty (risk 2): Expected [200, 400, 422] but got 403", "[UNEXPECTED_STATUS] autocomplete-localised (risk 2): Expected [200] but got 403", "[UNEXPECTED_STATUS] autocomplete-size-zero (risk 2): Expected [200, 400, 422] but got 403", "[UNEXPECTED_STATUS] autocomplete-size-huge (risk 2): Expected [200, 400, 422] but got 403", "[UNEXPECTED_STATUS] autocomplete-wrong-type (risk 2): Expected [200, 400, 422] but got 403", "[UNEXPECTED_STATUS] autocomplete-get-method (risk 1): Expected [200, 400, 404, 405] but got 403" ]
+    "attention" : [ "[BLOCKED] autocomplete-city (risk 5): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] search-results-page (risk 5): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] front-door (risk 4): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] autocomplete-unicode (risk 3): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] search-results-past-dates (risk 3): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] autocomplete-typo (risk 3): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] autocomplete-ambiguous (risk 3): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] autocomplete-empty (risk 2): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] autocomplete-localised (risk 2): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] autocomplete-size-zero (risk 2): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] autocomplete-size-huge (risk 2): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] autocomplete-wrong-type (risk 2): Edge protection challenged the probe; checks on this surface are inconclusive from this network", "[BLOCKED] autocomplete-get-method (risk 1): Edge protection challenged the probe; checks on this surface are inconclusive from this network" ]
   },
-  "phaseNotes" : [ "Phase `smoke`: 1 passed, 1 failed, 0 skipped (pass rate 50%, threshold 50%)", "Phase `regression`: 35 passed, 11 failed, 0 skipped, 0 transient retries" ],
+  "phaseNotes" : [ "Phase `smoke`: 1 passed, 0 failed, 0 skipped (pass rate 100%, threshold 50%)", "Phase `regression`: 23 passed, 0 failed, 0 skipped, 0 transient retries" ],
   "outcomes" : [ {
-    "id" : "AutocompleteApiTest#cityQueryReturnsTheCityFirst",
-    "description" : "City query returns the city first, in the published contract",
-    "groups" : [ "search", "autocomplete", "contract", "smoke" ],
-    "status" : "FAILED",
-    "durationMs" : 526,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 1,
-    "phase" : "smoke"
-  }, {
     "id" : "DemandApiAuthTest#searchWithoutCredentialsIsRefused",
     "description" : "Search without credentials is refused with 401",
     "groups" : [ "security", "negative", "demand-auth", "smoke", "checkout" ],
     "status" : "PASSED",
-    "durationMs" : 405,
+    "durationMs" : 433,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -517,7 +507,7 @@
     "description" : "A normal page and a JSON API 403 are not mistaken for a challenge",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 3,
+    "durationMs" : 4,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -526,6 +516,17 @@
   }, {
     "id" : "FrameworkSelfTest#challengePageIsDetected",
     "description" : "Challenge page body is recognised",
+    "groups" : [ "unit" ],
+    "status" : "PASSED",
+    "durationMs" : 2,
+    "category" : null,
+    "reason" : null,
+    "httpStatus" : null,
+    "attempt" : 1,
+    "phase" : "regression"
+  }, {
+    "id" : "FrameworkSelfTest#genericCloudFrontForbiddenIsDetected",
+    "description" : "A generic JSON 'Forbidden' relayed as a CloudFront error is a refused caller, not a product answer",
     "groups" : [ "unit" ],
     "status" : "PASSED",
     "durationMs" : 1,
@@ -550,7 +551,7 @@
     "description" : "Fully challenged surfaces are excluded with a reason; healthy ones run",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 13,
+    "durationMs" : 14,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -561,7 +562,7 @@
     "description" : "Removed fields are breaking drift, added fields are not",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 4,
+    "durationMs" : 6,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -572,7 +573,7 @@
     "description" : "Failures are classified into the right category",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 2,
+    "durationMs" : 3,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -583,7 +584,7 @@
     "description" : "Failures are classified into the right category",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 2,
+    "durationMs" : 3,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -594,7 +595,7 @@
     "description" : "Failures are classified into the right category",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 1,
+    "durationMs" : 2,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -616,7 +617,7 @@
     "description" : "Failures are classified into the right category",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 2,
+    "durationMs" : 1,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -627,7 +628,7 @@
     "description" : "Failures are classified into the right category",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 1,
+    "durationMs" : 0,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -638,7 +639,7 @@
     "description" : "Failures are classified into the right category",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 2,
+    "durationMs" : 1,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -682,7 +683,7 @@
     "description" : "Blocking failure => FAIL; mostly skipped => INCONCLUSIVE; otherwise PASS",
     "groups" : [ "unit" ],
     "status" : "PASSED",
-    "durationMs" : 2,
+    "durationMs" : 3,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -700,253 +701,11 @@
     "attempt" : 1,
     "phase" : "regression"
   }, {
-    "id" : "AutocompleteApiTest#apiResponsesCarrySecurityHeaders",
-    "description" : "JSON API responses carry transport and sniffing protections",
-    "groups" : [ "security", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 670,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 1,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#arabicScriptQueryIsSupported",
-    "description" : "Arabic-script query is understood (multilingual market)",
-    "groups" : [ "search", "autocomplete" ],
-    "status" : "FAILED",
-    "durationMs" : 292,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 1,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[empty, ]",
-    "description" : "Edge-case queries never cause a server error",
-    "groups" : [ "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 254,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 1,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[blank,    ]",
-    "description" : "Edge-case queries never cause a server error",
-    "groups" : [ "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 230,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 2,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[gibberish, zzqxjvwkq]",
-    "description" : "Edge-case queries never cause a server error",
-    "groups" : [ "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 223,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 3,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[single char, c]",
-    "description" : "Edge-case queries never cause a server error",
-    "groups" : [ "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 222,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 4,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[very long, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
-    "description" : "Edge-case queries never cause a server error",
-    "groups" : [ "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 220,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 5,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#edgeCaseQueriesAreHandledGracefully[emoji, \uD83C\uDFD6️ beach]",
-    "description" : "Edge-case queries never cause a server error",
-    "groups" : [ "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 686,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 6,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[<script>alert(1)</script>]",
-    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
-    "groups" : [ "security", "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 235,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 1,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[' OR '1'='1]",
-    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
-    "groups" : [ "security", "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 228,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 2,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[Cairo\"; DROP TABLE hotels;--]",
-    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
-    "groups" : [ "security", "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 223,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 3,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[{{7*7}}${7*7}]",
-    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
-    "groups" : [ "security", "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 241,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 4,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#injectionPayloadsAreTreatedAsText[../../../../etc/passwd]",
-    "description" : "Injection payloads are treated as plain text (no 5xx, no reflected markup)",
-    "groups" : [ "security", "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 256,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 5,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#malformedBodyIsRejectedGracefully",
-    "description" : "Malformed JSON body is rejected without a server error",
-    "groups" : [ "negative", "search", "autocomplete" ],
-    "status" : "PASSED",
-    "durationMs" : 665,
-    "category" : null,
-    "reason" : null,
-    "httpStatus" : null,
-    "attempt" : 1,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#queryIsNormalised",
-    "description" : "Case and surrounding whitespace do not change what the user gets",
-    "groups" : [ "search", "autocomplete" ],
-    "status" : "FAILED",
-    "durationMs" : 494,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "[suggestions for 'Cairo'] ",
-    "httpStatus" : null,
-    "attempt" : 1,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#respondsWithinLatencyObjective",
-    "description" : "Suggestions arrive within the latency objective (typing feels instant)",
-    "groups" : [ "search", "performance", "autocomplete" ],
-    "status" : "FAILED",
-    "durationMs" : 500,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 1,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#resultCountHonoursRequestedSize",
-    "description" : "Never returns more suggestions than requested",
-    "groups" : [ "search", "autocomplete", "contract" ],
-    "status" : "FAILED",
-    "durationMs" : 235,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 1,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Cairo, expectedInLabel=Egypt, countryCode=eg, demandCityId=-290692]]",
-    "description" : "Top suggestion is the right city in the right country",
-    "groups" : [ "search", "autocomplete" ],
-    "status" : "FAILED",
-    "durationMs" : 256,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 1,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Paris, expectedInLabel=France, countryCode=fr, demandCityId=-1456928]]",
-    "description" : "Top suggestion is the right city in the right country",
-    "groups" : [ "search", "autocomplete" ],
-    "status" : "FAILED",
-    "durationMs" : 240,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 2,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Amsterdam, expectedInLabel=Netherlands, countryCode=nl, demandCityId=-2140479]]",
-    "description" : "Top suggestion is the right city in the right country",
-    "groups" : [ "search", "autocomplete" ],
-    "status" : "FAILED",
-    "durationMs" : 228,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 3,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Dubai, expectedInLabel=United Arab Emirates, countryCode=ae, demandCityId=-782831]]",
-    "description" : "Top suggestion is the right city in the right country",
-    "groups" : [ "search", "autocomplete" ],
-    "status" : "FAILED",
-    "durationMs" : 284,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 4,
-    "phase" : "regression"
-  }, {
-    "id" : "AutocompleteApiTest#topSuggestionIsTheRightCityInTheRightCountry[Destination[name=Tokyo, expectedInLabel=Japan, countryCode=jp, demandCityId=-246227]]",
-    "description" : "Top suggestion is the right city in the right country",
-    "groups" : [ "search", "autocomplete" ],
-    "status" : "FAILED",
-    "durationMs" : 340,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 5,
-    "phase" : "regression"
-  }, {
     "id" : "DemandApiAuthTest#errorsDoNotLeakInternals",
     "description" : "Error responses do not leak implementation details",
     "groups" : [ "security", "negative", "demand-auth", "checkout" ],
     "status" : "PASSED",
-    "durationMs" : 178,
+    "durationMs" : 141,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -957,7 +716,7 @@
     "description" : "Checkout (order preview) without credentials is refused",
     "groups" : [ "security", "negative", "demand-auth", "checkout" ],
     "status" : "PASSED",
-    "durationMs" : 170,
+    "durationMs" : 511,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -968,7 +727,7 @@
     "description" : "Search with an invalid bearer token is refused",
     "groups" : [ "security", "negative", "demand-auth", "checkout" ],
     "status" : "PASSED",
-    "durationMs" : 445,
+    "durationMs" : 146,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -979,7 +738,7 @@
     "description" : "Wrong HTTP method on a POST-only endpoint is neither served nor crashes",
     "groups" : [ "security", "negative", "demand-auth", "checkout" ],
     "status" : "PASSED",
-    "durationMs" : 177,
+    "durationMs" : 110,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
@@ -990,85 +749,13 @@
     "description" : "Runs Cucumber Scenarios",
     "groups" : [ "cucumber" ],
     "status" : "PASSED",
-    "durationMs" : 232,
+    "durationMs" : 221,
     "category" : null,
     "reason" : null,
     "httpStatus" : null,
     "attempt" : 1,
     "phase" : "regression"
-  }, {
-    "id" : "Scenario: The search box suggests the city I typed first",
-    "description" : "Runs Cucumber Scenarios",
-    "groups" : [ "cucumber" ],
-    "status" : "FAILED",
-    "durationMs" : 251,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 2,
-    "phase" : "regression"
-  }, {
-    "id" : "Scenario: The search box suggests the city I typed first",
-    "description" : "Runs Cucumber Scenarios",
-    "groups" : [ "cucumber" ],
-    "status" : "FAILED",
-    "durationMs" : 243,
-    "category" : "FUNCTIONAL_DEFECT",
-    "reason" : "1 expectation failed.",
-    "httpStatus" : 403,
-    "attempt" : 3,
-    "phase" : "regression"
   } ],
-  "healing" : [ {
-    "probe" : "autocomplete-city",
-    "reason" : "BREAKING drift, removed [$.results:array, $.results[].b_max_los_data.defaultLos:number, $.results[].b_max_los_data.experiment:string, $.results[].b_max_los_data.extendedLos:number, $.results[].b_max_los_data.fullOn:boolean, $.results[].b_max_los_data:object, $.results[].b_show_entire_homes_checkbox:boolean, $.results[].cc1:string, $.results[].cjk:boolean, $.results[].dest_id:string, $.results[].dest_type:string, $.results[].label1:string, $.results[].label2:string, $.results[].label:string, $.results[].labels:array, $.results[].labels[].dest_id:string, $.results[].labels[].dest_type:string, $.results[].labels[].hl:number, $.results[].labels[].precomposed:string, $.results[].labels[].text:string, $.results[].labels[]:object, $.results[].latitude:number, $.results[].lc:string, $.results[].longitude:number, $.results[].nr_homes:number, $.results[].nr_hotels:number, $.results[].nr_hotels_25:number, $.results[].photo_uri:string, $.results[].roundtrip:string, $.results[].rtl:boolean, $.results[].value:string, $.results[]:object], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-city.json",
-    "accepted" : false
-  }, {
-    "probe" : "autocomplete-unicode",
-    "reason" : "BREAKING drift, removed [$.results:array, $.results[].b_max_los_data.defaultLos:number, $.results[].b_max_los_data.experiment:string, $.results[].b_max_los_data.extendedLos:number, $.results[].b_max_los_data.fullOn:boolean, $.results[].b_max_los_data:object, $.results[].b_show_entire_homes_checkbox:boolean, $.results[].cc1:string, $.results[].cjk:boolean, $.results[].dest_id:string, $.results[].dest_type:string, $.results[].label1:string, $.results[].label2:string, $.results[].label:string, $.results[].labels:array, $.results[].labels[].dest_id:string, $.results[].labels[].dest_type:string, $.results[].labels[].hl:number, $.results[].labels[].precomposed:string, $.results[].labels[].text:string, $.results[].labels[]:object, $.results[].latitude:number, $.results[].lc:string, $.results[].longitude:number, $.results[].nr_homes:number, $.results[].nr_hotels:number, $.results[].nr_hotels_25:number, $.results[].photo_uri:string, $.results[].roundtrip:string, $.results[].rtl:boolean, $.results[].value:string, $.results[]:object], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-unicode.json",
-    "accepted" : false
-  }, {
-    "probe" : "autocomplete-empty",
-    "reason" : "BREAKING drift, removed [$.results:array], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-empty.json",
-    "accepted" : false
-  }, {
-    "probe" : "autocomplete-typo",
-    "reason" : "BREAKING drift, removed [$.results:array, $.results[].b_max_los_data.defaultLos:number, $.results[].b_max_los_data.experiment:string, $.results[].b_max_los_data.extendedLos:number, $.results[].b_max_los_data.fullOn:boolean, $.results[].b_max_los_data:object, $.results[].b_show_entire_homes_checkbox:boolean, $.results[].cc1:string, $.results[].cjk:boolean, $.results[].dest_id:string, $.results[].dest_type:string, $.results[].label1:string, $.results[].label2:string, $.results[].label:string, $.results[].labels:array, $.results[].labels[].dest_id:string, $.results[].labels[].dest_type:string, $.results[].labels[].hl:number, $.results[].labels[].precomposed:string, $.results[].labels[].text:string, $.results[].labels[]:object, $.results[].latitude:number, $.results[].lc:string, $.results[].longitude:number, $.results[].nr_homes:number, $.results[].nr_hotels:number, $.results[].nr_hotels_25:number, $.results[].photo_uri:string, $.results[].roundtrip:string, $.results[].rtl:boolean, $.results[].value:string, $.results[]:object], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-typo.json",
-    "accepted" : false
-  }, {
-    "probe" : "autocomplete-ambiguous",
-    "reason" : "BREAKING drift, removed [$.results:array, $.results[].b_max_los_data.defaultLos:number, $.results[].b_max_los_data.experiment:string, $.results[].b_max_los_data.extendedLos:number, $.results[].b_max_los_data.fullOn:boolean, $.results[].b_max_los_data:object, $.results[].b_show_entire_homes_checkbox:boolean, $.results[].cc1:string, $.results[].cjk:boolean, $.results[].dest_id:string, $.results[].dest_type:string, $.results[].label1:string, $.results[].label2:string, $.results[].label:string, $.results[].labels:array, $.results[].labels[].dest_id:string, $.results[].labels[].dest_type:string, $.results[].labels[].hl:number, $.results[].labels[].precomposed:string, $.results[].labels[].text:string, $.results[].labels[]:object, $.results[].latitude:number, $.results[].lc:string, $.results[].longitude:number, $.results[].nr_homes:number, $.results[].nr_hotels:number, $.results[].nr_hotels_25:number, $.results[].photo_uri:string, $.results[].roundtrip:string, $.results[].rtl:boolean, $.results[].value:string, $.results[]:object], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-ambiguous.json",
-    "accepted" : false
-  }, {
-    "probe" : "autocomplete-localised",
-    "reason" : "BREAKING drift, removed [$.results:array, $.results[].b_max_los_data.defaultLos:number, $.results[].b_max_los_data.experiment:string, $.results[].b_max_los_data.extendedLos:number, $.results[].b_max_los_data.fullOn:boolean, $.results[].b_max_los_data:object, $.results[].b_show_entire_homes_checkbox:boolean, $.results[].cc1:string, $.results[].cjk:boolean, $.results[].dest_id:string, $.results[].dest_type:string, $.results[].label1:string, $.results[].label2:string, $.results[].label:string, $.results[].labels:array, $.results[].labels[].dest_id:string, $.results[].labels[].dest_type:string, $.results[].labels[].hl:number, $.results[].labels[].precomposed:string, $.results[].labels[].text:string, $.results[].labels[]:object, $.results[].latitude:number, $.results[].lc:string, $.results[].longitude:number, $.results[].nr_homes:number, $.results[].nr_hotels:number, $.results[].nr_hotels_25:number, $.results[].photo_uri:string, $.results[].roundtrip:string, $.results[].rtl:boolean, $.results[].value:string, $.results[]:object], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-localised.json",
-    "accepted" : false
-  }, {
-    "probe" : "autocomplete-size-zero",
-    "reason" : "BREAKING drift, removed [$.results:array], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-size-zero.json",
-    "accepted" : false
-  }, {
-    "probe" : "autocomplete-size-huge",
-    "reason" : "BREAKING drift, removed [$.results:array], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-size-huge.json",
-    "accepted" : false
-  }, {
-    "probe" : "autocomplete-wrong-type",
-    "reason" : "BREAKING drift, removed [$.results:array, $.results[].b_max_los_data.defaultLos:number, $.results[].b_max_los_data.experiment:string, $.results[].b_max_los_data.extendedLos:number, $.results[].b_max_los_data.fullOn:boolean, $.results[].b_max_los_data:object, $.results[].b_show_entire_homes_checkbox:boolean, $.results[].cc1:string, $.results[].cjk:boolean, $.results[].dest_id:string, $.results[].dest_type:string, $.results[].label1:string, $.results[].label2:string, $.results[].label:string, $.results[].labels:array, $.results[].labels[].dest_id:string, $.results[].labels[].dest_type:string, $.results[].labels[].hl:number, $.results[].labels[].match:string, $.results[].labels[].precomposed:string, $.results[].labels[].text:string, $.results[].labels[]:object, $.results[].latitude:number, $.results[].lc:string, $.results[].longitude:number, $.results[].nr_homes:number, $.results[].nr_hotels:number, $.results[].nr_hotels_25:number, $.results[].photo_uri:string, $.results[].roundtrip:string, $.results[].rtl:boolean, $.results[].value:string, $.results[]:object], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-wrong-type.json",
-    "accepted" : false
-  }, {
-    "probe" : "autocomplete-get-method",
-    "reason" : "BREAKING drift, removed [$.results:array], added [$.message:string, $.servlet:string, $.status:string, $.url:string]",
-    "proposedFile" : "target/autonomous/healing/live/autocomplete-get-method.json",
-    "accepted" : false
-  } ],
+  "healing" : [ ],
   "aiAdvice" : null
 }
