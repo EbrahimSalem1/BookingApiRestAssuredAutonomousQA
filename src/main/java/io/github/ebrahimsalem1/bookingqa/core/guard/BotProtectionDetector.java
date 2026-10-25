@@ -36,6 +36,12 @@ public final class BotProtectionDetector {
             return Optional.of("Rate limited by edge (HTTP 429)");
         }
         String lower = body == null ? "" : body.toLowerCase(Locale.ROOT);
+        if (isGenericEdgeForbidden(status, cacheHeader, lower)) {
+            // Seen on autocomplete.json from CI runners since 2026-10-15: a bare JSON
+            // {"message":"Forbidden"} relayed as a CloudFront error on an endpoint that needs no auth.
+            // The caller was refused, the product was never exercised.
+            return Optional.of("Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403)");
+        }
         if (lower.stripLeading().startsWith("{") || lower.stripLeading().startsWith("[")) {
             // A JSON body is the application talking (e.g. a Demand API 403), not an edge challenge.
             return Optional.empty();
@@ -55,6 +61,20 @@ public final class BotProtectionDetector {
             }
         }
         return Optional.empty();
+    }
+
+    /**
+     * A 403 that CloudFront marks as an error and whose JSON body carries nothing but a generic
+     * "Forbidden" message. Application-level refusals (e.g. the Demand API's
+     * {@code {"errors":[{"id":"access_denied"}]}}) carry structured detail and are not matched.
+     */
+    private static boolean isGenericEdgeForbidden(int status, String cacheHeader, String lowerBody) {
+        if (status != 403 || cacheHeader == null
+                || !cacheHeader.toLowerCase(Locale.ROOT).contains("error from cloudfront")) {
+            return false;
+        }
+        return lowerBody.matches("(?s)\\s*\\{.*\"message\"\\s*:\\s*\"forbidden\".*}\\s*")
+                && !lowerBody.contains("\"errors\"");
     }
 
     private static String safeBody(Response response) {

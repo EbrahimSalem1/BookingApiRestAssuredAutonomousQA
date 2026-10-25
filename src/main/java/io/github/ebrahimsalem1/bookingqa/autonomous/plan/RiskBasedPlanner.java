@@ -89,7 +89,11 @@ public class RiskBasedPlanner {
         if (blocked == obs.size()) {
             return SurfaceHealth.BLOCKED;
         }
-        return blocked > 0 ? SurfaceHealth.DEGRADED : SurfaceHealth.HEALTHY;
+        // Any blocked, slow, drifted or unexpected-status probe means the surface is not healthy
+        // (it previously read HEALTHY while every probe returned 403).
+        boolean allHealthy = obs.stream().allMatch(o -> o.health() == Observation.Health.HEALTHY
+                || o.health() == Observation.Health.NOT_PROBED);
+        return allHealthy ? SurfaceHealth.HEALTHY : SurfaceHealth.DEGRADED;
     }
 
     private static String firstNote(List<Observation> obs) {

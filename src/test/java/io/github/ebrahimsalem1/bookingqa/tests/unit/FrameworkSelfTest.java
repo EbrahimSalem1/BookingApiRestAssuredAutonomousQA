@@ -80,6 +80,15 @@ public class FrameworkSelfTest {
     public void applicationResponsesAreNotFlagged() {
         assertThat(BotProtectionDetector.detect(200, null, null, "<html>Cairo hotels</html>")).isEmpty();
         assertThat(BotProtectionDetector.detect(403, null, null, "{\"errors\":[{\"id\":\"access_denied\"}]}")).isEmpty();
+        assertThat(BotProtectionDetector.detect(403, null, "Error from cloudfront",
+                "{\"errors\":[{\"id\":\"access_denied\",\"message\":\"Forbidden\"}]}")).isEmpty();
+    }
+
+    @Test(description = "A generic JSON 'Forbidden' relayed as a CloudFront error is a refused caller, not a product answer")
+    public void genericCloudFrontForbiddenIsDetected() {
+        String body = "{\n\"servlet\":\"jersey\",\n\"message\":\"Forbidden\",\n\"url\":\"/autocomplete.json\",\n\"status\":\"403\"\n}";
+        assertThat(BotProtectionDetector.detect(403, null, "Error from cloudfront", body)).isPresent();
+        assertThat(BotProtectionDetector.detect(403, null, null, body)).isEmpty();
     }
 
     // ------------------------------------------------------------------ contract drift
