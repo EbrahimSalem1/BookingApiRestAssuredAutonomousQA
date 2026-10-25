@@ -1,1 +1,1 @@
-<testng-results ignored="0" total="73" passed="72" failed="0" skipped="1">
+<testng-results ignored="0" total="74" passed="73" failed="0" skipped="1">

@@ -2,29 +2,29 @@
 
 **Verdict: PASS**: All executed checks passed
 
-Started 2026-10-25T11:46:49Z, finished 2026-10-25T11:46:55Z.
+Started 2026-10-25T11:56:18Z, finished 2026-10-25T11:56:23Z.
 
 ## 1. Observe: exploration probes
 
 | Probe | Area | Risk | Health | HTTP | Latency (ms) | Note |
 |---|---|---|---|---|---|---|
-| `autocomplete-city` | search | 5 | HEALTHY | 200 | 258 | Matches baseline |
-| `autocomplete-unicode` | search | 3 | HEALTHY | 200 | 12 | Matches baseline |
-| `autocomplete-empty` | search | 2 | HEALTHY | 200 | 13 | Matches baseline |
-| `search-results-page` | search | 5 | HEALTHY | 200 | 20 | HTML surface (status, headers and latency tracked; no JSON shape) |
-| `search-results-past-dates` | search | 3 | HEALTHY | 200 | 9 | HTML surface (status, headers and latency tracked; no JSON shape) |
-| `front-door` | platform | 4 | HEALTHY | 200 | 9 | HTML surface (status, headers and latency tracked; no JSON shape) |
-| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 11 | Matches baseline |
-| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 9 | Matches baseline |
-| `demand-search` | checkout | 5 | HEALTHY | 200 | 23 | Matches baseline |
-| `autocomplete-typo` | search | 3 | HEALTHY | 200 | 9 | No baseline yet |
+| `autocomplete-city` | search | 5 | HEALTHY | 200 | 260 | Matches baseline |
+| `autocomplete-unicode` | search | 3 | HEALTHY | 200 | 16 | Matches baseline |
+| `autocomplete-empty` | search | 2 | HEALTHY | 200 | 12 | Matches baseline |
+| `search-results-page` | search | 5 | HEALTHY | 200 | 32 | HTML surface (status, headers and latency tracked; no JSON shape) |
+| `search-results-past-dates` | search | 3 | HEALTHY | 200 | 31 | HTML surface (status, headers and latency tracked; no JSON shape) |
+| `front-door` | platform | 4 | HEALTHY | 200 | 11 | HTML surface (status, headers and latency tracked; no JSON shape) |
+| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 14 | Matches baseline |
+| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 8 | Matches baseline |
+| `demand-search` | checkout | 5 | HEALTHY | 200 | 22 | Matches baseline |
+| `autocomplete-typo` | search | 3 | HEALTHY | 200 | 8 | No baseline yet |
 | `autocomplete-ambiguous` | search | 3 | HEALTHY | 200 | 9 | No baseline yet |
-| `autocomplete-localised` | search | 2 | HEALTHY | 200 | 9 | No baseline yet |
-| `autocomplete-size-zero` | search | 2 | HEALTHY | 200 | 9 | No baseline yet |
-| `autocomplete-size-huge` | search | 2 | HEALTHY | 200 | 8 | No baseline yet |
-| `autocomplete-wrong-type` | search | 2 | HEALTHY | 200 | 7 | No baseline yet |
-| `autocomplete-get-method` | search | 1 | HEALTHY | 404 | 39 | No baseline yet |
-| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 405 | 9 | No baseline yet |
+| `autocomplete-localised` | search | 2 | HEALTHY | 200 | 11 | No baseline yet |
+| `autocomplete-size-zero` | search | 2 | HEALTHY | 200 | 12 | No baseline yet |
+| `autocomplete-size-huge` | search | 2 | HEALTHY | 200 | 12 | No baseline yet |
+| `autocomplete-wrong-type` | search | 2 | HEALTHY | 200 | 10 | No baseline yet |
+| `autocomplete-get-method` | search | 1 | HEALTHY | 404 | 43 | No baseline yet |
+| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 405 | 12 | No baseline yet |
 
 <details><summary>Headers observed on the front door</summary>
 
@@ -46,17 +46,17 @@ No surface excluded.
 ## 3. Execute
 
 - Phase `smoke`: 6 passed, 0 failed, 0 skipped (pass rate 100%, threshold 50%)
-- Phase `regression`: 66 passed, 0 failed, 1 skipped, 0 transient retries
+- Phase `regression`: 67 passed, 0 failed, 1 skipped, 0 transient retries
 
 ## 4. Triage
 
 | Passed | Failed | Skipped | Retried |
 |---|---|---|---|
-| 72 | 0 | 1 | 0 |
+| 73 | 0 | 1 | 0 |
 
 | Status | Category | Blocking | Check | Reason |
 |---|---|---|---|---|
-| SKIPPED | PRECONDITION_NOT_MET | no | `WebPlatformSecurityTest#plainHttpRedirectsToHttps` | Skipped: [NOT_APPLICABLE] HTTP->HTTPS redirect only meaningful against the real host (base http://localhost:35925) |
+| SKIPPED | PRECONDITION_NOT_MET | no | `WebPlatformSecurityTest#plainHttpRedirectsToHttps` | Skipped: [NOT_APPLICABLE] HTTP->HTTPS redirect only meaningful against the real host (base http://localhost:46701) |
 
 ## 5. Heal: contract baselines
 
