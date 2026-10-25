@@ -2,34 +2,34 @@
 
 **Verdict: FAIL**: 12 blocking failure(s): [FUNCTIONAL_DEFECT AutocompleteApiTest#cityQueryReturnsTheCityFirst, FUNCTIONAL_DEFECT AutocompleteApiTest#arabicScriptQueryIsSupported, FUNCTIONAL_DEFECT AutocompleteApiTest#queryIsNormalised, FUNCTIONAL_DEFECT AutocompleteApiTest#respondsWithinLatencyObjective, FUNCTIONAL_DEFECT AutocompleteApiTest#resultCountHonoursRequestedSize]
 
-Started 2026-10-24T08:07:29Z, finished 2026-10-24T08:07:41Z.
+Started 2026-10-25T08:24:56Z, finished 2026-10-25T08:25:07Z.
 
 ## 1. Observe: exploration probes
 
 | Probe | Area | Risk | Health | HTTP | Latency (ms) | Note |
 |---|---|---|---|---|---|---|
-| `autocomplete-city` | search | 5 | UNEXPECTED_STATUS | 403 | 488 | Expected [200] but got 403 |
-| `autocomplete-unicode` | search | 3 | UNEXPECTED_STATUS | 403 | 169 | Expected [200] but got 403 |
-| `autocomplete-empty` | search | 2 | UNEXPECTED_STATUS | 403 | 167 | Expected [200, 400, 422] but got 403 |
-| `search-results-page` | search | 5 | BLOCKED | 202 | 371 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `search-results-past-dates` | search | 3 | BLOCKED | 202 | 428 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `front-door` | platform | 4 | BLOCKED | 202 | 220 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 289 | Matches baseline |
-| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 115 | Matches baseline |
+| `autocomplete-city` | search | 5 | UNEXPECTED_STATUS | 403 | 428 | Expected [200] but got 403 |
+| `autocomplete-unicode` | search | 3 | UNEXPECTED_STATUS | 403 | 142 | Expected [200] but got 403 |
+| `autocomplete-empty` | search | 2 | UNEXPECTED_STATUS | 403 | 158 | Expected [200, 400, 422] but got 403 |
+| `search-results-page` | search | 5 | BLOCKED | 202 | 466 | Bot challenge page (HTTP 202, marker 'awswaf') |
+| `search-results-past-dates` | search | 3 | BLOCKED | 202 | 198 | Bot challenge page (HTTP 202, marker 'awswaf') |
+| `front-door` | platform | 4 | BLOCKED | 202 | 52 | Bot challenge page (HTTP 202, marker 'awswaf') |
+| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 312 | Matches baseline |
+| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 116 | Matches baseline |
 | `demand-search` | checkout | 5 | NOT_PROBED | - | - | No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID) |
-| `autocomplete-typo` | search | 3 | UNEXPECTED_STATUS | 403 | 153 | Expected [200] but got 403 |
-| `autocomplete-ambiguous` | search | 3 | UNEXPECTED_STATUS | 403 | 161 | Expected [200] but got 403 |
-| `autocomplete-localised` | search | 2 | UNEXPECTED_STATUS | 403 | 160 | Expected [200] but got 403 |
-| `autocomplete-size-zero` | search | 2 | UNEXPECTED_STATUS | 403 | 163 | Expected [200, 400, 422] but got 403 |
-| `autocomplete-size-huge` | search | 2 | UNEXPECTED_STATUS | 403 | 168 | Expected [200, 400, 422] but got 403 |
-| `autocomplete-wrong-type` | search | 2 | UNEXPECTED_STATUS | 403 | 153 | Expected [200, 400, 422] but got 403 |
-| `autocomplete-get-method` | search | 1 | UNEXPECTED_STATUS | 403 | 174 | Expected [200, 400, 404, 405] but got 403 |
-| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 401 | 115 | Matches baseline |
+| `autocomplete-typo` | search | 3 | UNEXPECTED_STATUS | 403 | 146 | Expected [200] but got 403 |
+| `autocomplete-ambiguous` | search | 3 | UNEXPECTED_STATUS | 403 | 157 | Expected [200] but got 403 |
+| `autocomplete-localised` | search | 2 | UNEXPECTED_STATUS | 403 | 147 | Expected [200] but got 403 |
+| `autocomplete-size-zero` | search | 2 | UNEXPECTED_STATUS | 403 | 157 | Expected [200, 400, 422] but got 403 |
+| `autocomplete-size-huge` | search | 2 | UNEXPECTED_STATUS | 403 | 150 | Expected [200, 400, 422] but got 403 |
+| `autocomplete-wrong-type` | search | 2 | UNEXPECTED_STATUS | 403 | 166 | Expected [200, 400, 422] but got 403 |
+| `autocomplete-get-method` | search | 1 | UNEXPECTED_STATUS | 403 | 164 | Expected [200, 400, 404, 405] but got 403 |
+| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 401 | 100 | Matches baseline |
 
 <details><summary>Headers observed on the front door</summary>
 
 - `strict-transport-security`: max-age=63072000; includeSubDomains; preload
-- `server`: istio-envoy
+- `server`: CloudFront
 - `x-cache`: Miss from cloudfront
 
 </details>
