@@ -2,29 +2,29 @@
 
 **Verdict: INCONCLUSIVE**: Everything that ran passed, but at least one surface could not be exercised from this network: [autocomplete, web, demand-partner]
 
-Started 2026-10-27T08:59:19Z, finished 2026-10-27T08:59:25Z.
+Started 2026-10-28T09:39:52Z, finished 2026-10-28T09:39:59Z.
 
 ## 1. Observe: exploration probes
 
 | Probe | Area | Risk | Health | HTTP | Latency (ms) | Note |
 |---|---|---|---|---|---|---|
-| `autocomplete-city` | search | 5 | BLOCKED | 403 | 592 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `autocomplete-unicode` | search | 3 | BLOCKED | 403 | 214 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `autocomplete-empty` | search | 2 | BLOCKED | 403 | 194 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `search-results-page` | search | 5 | BLOCKED | 202 | 164 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `search-results-past-dates` | search | 3 | BLOCKED | 202 | 87 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `front-door` | platform | 4 | BLOCKED | 202 | 244 | Bot challenge page (HTTP 202, marker 'awswaf') |
-| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 290 | Matches baseline |
-| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 161 | Matches baseline |
+| `autocomplete-city` | search | 5 | BLOCKED | 403 | 484 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `autocomplete-unicode` | search | 3 | BLOCKED | 403 | 225 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `autocomplete-empty` | search | 2 | BLOCKED | 403 | 201 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `search-results-page` | search | 5 | BLOCKED | 202 | 156 | Bot challenge page (HTTP 202, marker 'awswaf') |
+| `search-results-past-dates` | search | 3 | BLOCKED | 202 | 60 | Bot challenge page (HTTP 202, marker 'awswaf') |
+| `front-door` | platform | 4 | BLOCKED | 202 | 200 | Bot challenge page (HTTP 202, marker 'awswaf') |
+| `demand-search-anonymous` | checkout | 5 | HEALTHY | 401 | 241 | Matches baseline |
+| `demand-orders-preview-anonymous` | checkout | 5 | HEALTHY | 401 | 126 | Matches baseline |
 | `demand-search` | checkout | 5 | NOT_PROBED | - | - | No Demand API credentials (DEMAND_TOKEN / DEMAND_AFFILIATE_ID) |
-| `autocomplete-typo` | search | 3 | BLOCKED | 403 | 191 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `autocomplete-ambiguous` | search | 3 | BLOCKED | 403 | 195 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `autocomplete-localised` | search | 2 | BLOCKED | 403 | 191 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `autocomplete-size-zero` | search | 2 | BLOCKED | 403 | 174 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `autocomplete-size-huge` | search | 2 | BLOCKED | 403 | 199 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `autocomplete-wrong-type` | search | 2 | BLOCKED | 403 | 193 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `autocomplete-get-method` | search | 1 | BLOCKED | 403 | 175 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
-| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 401 | 142 | Matches baseline |
+| `autocomplete-typo` | search | 3 | BLOCKED | 403 | 201 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `autocomplete-ambiguous` | search | 3 | BLOCKED | 403 | 183 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `autocomplete-localised` | search | 2 | BLOCKED | 403 | 187 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `autocomplete-size-zero` | search | 2 | BLOCKED | 403 | 176 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `autocomplete-size-huge` | search | 2 | BLOCKED | 403 | 209 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `autocomplete-wrong-type` | search | 2 | BLOCKED | 403 | 190 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `autocomplete-get-method` | search | 1 | BLOCKED | 403 | 204 | Caller refused: generic JSON 403 'Forbidden' via CloudFront (HTTP 403) |
+| `demand-get-method-anonymous` | checkout | 2 | HEALTHY | 401 | 132 | Matches baseline |
 
 <details><summary>Headers observed on the front door</summary>
 
